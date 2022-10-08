@@ -1,0 +1,60 @@
+.reyt__title{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+  margin-bottom: 60px;
+}
+.reyting__box{
+  margin-bottom: 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 10px rgba(255, 107, 0, 0.05);
+  border-radius: 5px;
+  padding: 10px;
+  p{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 32px;
+    color: #000000;
+    margin-bottom: 10px;
+  }
+  b{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+    color: #000000;
+  }
+}
+.reyting__progress{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 30px;
+  .radio{
+    cursor: pointer;
+    circle{
+      transition: 0.2s linear;
+    }
+  }
+  svg{
+    path{
+      stroke-width: 2px;
+    }
+  }
+}
+@media (max-width:425px) {
+  .reyt__title{
+    font-size: 20px;
+  }
+  .reyting__box{
+    p{
+      font-size: 20px;
+    }
+    b{
+      font-size: 20px;
+    }
+  }
+}
