@@ -188,7 +188,7 @@ export const Circle = (props) =>(
     <circle cx="22.5" cy="22.5" r="21.5" stroke={props.color} strokeWidth="2"/>
     <circle cx="22.5" cy="22.5" r={props.pick} fill={props.color2}/>
   </svg>
-
+  
 )
 // export const Circle = (props) =>(
 //   <svg width="42" height="42" viewBox="0 0 42 42" fill="none">

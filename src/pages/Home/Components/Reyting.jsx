@@ -50,7 +50,7 @@ const Reyting = (props) => {
     axios.post(`${BaseUrl}api/ovoz`, data)
       .then((res)=>{
         console.log(res)
-        if (res.data == "ok") {
+        if (res.data === "ok") {
           localStorage.setItem("ovoz", p)
           setalertText(t("REYTING_TITLE1"))
           setstatus("success")
