@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Play, Photo } from '../../../assets/icons';
+import { BaseUrl } from '../../../contans';
 
 const Card6 = (props) => {
   var data = props.data
@@ -18,7 +19,7 @@ const Card6 = (props) => {
               className="card__item"
               onClick={scrollTop}
               style={{
-                background: `url(${item.img})`,
+                background: `url(${BaseUrl+item.img})`,
                 backgroundPosition:"center",
                 backgroundSize:"cover"
               }}
@@ -30,10 +31,10 @@ const Card6 = (props) => {
               }
               <span>
                 { 
-                  til === "uz" ? item.title
+                  til === "uz" ? item.title_uz
                   : til === "ru" ? item.title_ru
-                  : item.title_uz
-                } 
+                  : item.title_en
+                }  
               </span>
             </Link>
           )

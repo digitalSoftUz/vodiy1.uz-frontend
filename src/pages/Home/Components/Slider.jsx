@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pagination } from "swiper";
+import { Link } from 'react-router-dom';
 import { BaseUrl } from '../../../contans';
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,6 +10,9 @@ import "swiper/css/pagination";
 const Slider2 = (props) => {
   var til = props.til
   var data = props.data
+  const scrollTop = () =>{
+    window.scrollTo(0 ,0)
+  }
   return (
     <React.Fragment>
       <Swiper
@@ -58,7 +62,7 @@ const Slider2 = (props) => {
         {data?.map((item, index)=>{
           return(
             <SwiperSlide key={index}>
-              <div>
+              <Link to={`/news/${item.id}`} onClick={scrollTop}>
                 <div className="slider__img">
                   <img src={BaseUrl+item.img} alt="" />
                 </div>
@@ -69,7 +73,7 @@ const Slider2 = (props) => {
                     : item.title_en
                   } 
                 </p>
-              </div>
+              </Link>
             </SwiperSlide>
           )
         }) }

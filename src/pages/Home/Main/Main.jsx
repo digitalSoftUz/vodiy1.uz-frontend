@@ -9,7 +9,6 @@ import Reyting from "../Components/Reyting";
 import CardList from '../Components/CardList';
 import { V1 } from '../../../context/context';
 import { useTranslation } from "react-i18next";
-import { MainData6 } from '../../../data/Data';
 
 const Main = (props) => {
   var til = props.til
@@ -58,12 +57,11 @@ const Main = (props) => {
             <div className="main">
               <div className="main__left">
                 <h1 className='box__title'>{t("REYTING")}</h1>
-                <h2 className='reyt__title'>{t("REYTING_TITLE")}</h2>
                 <Reyting til={til}/>
               </div>
               <div className="main__right">
                 <h1 className='box__title'>{t("F_V")}</h1>
-                <Card6 data={MainData6} til={til}/>
+                <Card6 data={x.songi15.slice(0, 6)} til={til}/>
               </div>
             </div>
             {/* <div className="main">

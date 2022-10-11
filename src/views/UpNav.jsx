@@ -4,20 +4,20 @@ import { Logo, Obhavo, Dollor, Gradus } from '../assets/icons';
 import dateFormat from "dateformat";
 import axios from 'axios';
 const UpNav = () => {
-  const [valyuta, setValyuta] = useState();
-  var date = new Date().toLocaleDateString('en-US')
-  var now = dateFormat(date, "yyyy-mm-dd")
-  console.log(valyuta)
-  useEffect(()=>{
-    const getValyuta = () =>{
-      axios.get(`https://cbu.uz/ru/arkhiv-kursov-valyut/json/USD/${now}/`)
-        .then((res)=>{
-          console.log(res)
-          setValyuta(res.data)
-      })
-    }
-    getValyuta()
-  },[])
+  // const [valyuta, setValyuta] = useState();
+  // var date = new Date().toLocaleDateString('en-US')
+  // var now = dateFormat(date, "yyyy-mm-dd")
+  // // console.log(valyuta)
+  // useEffect(()=>{
+  //   const getValyuta = () =>{
+  //     axios.get(`https://cbu.uz/ru/arkhiv-kursov-valyut/json/USD/${now}/`)
+  //       .then((res)=>{
+  //         console.log(res)
+  //         setValyuta(res.data)
+  //     })
+  //   }
+  //   getValyuta()
+  // },[])
   return ( 
     <V1.Consumer>
       {(x)=>{

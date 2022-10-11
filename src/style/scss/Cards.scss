@@ -92,6 +92,13 @@
     justify-content: flex-end;
     flex-direction: column;
     position: relative;
+    box-shadow: 9px 10px 20px -10px rgba(0, 0, 0, 0.29);
+    &:hover{
+      span{
+        color: #008000;
+        text-shadow: 0px 0px 4px #ffffff;
+      }
+    }
   }
   svg{
     position: absolute;
@@ -107,6 +114,9 @@
     color: #FFFFFF;
     padding: 5px;
     z-index: 2;
+    text-shadow: 0px 0px 4px #000000;
+    transition: 0.2s linear;
+    // backdrop-filter: blur(4px);
   }
 }
 

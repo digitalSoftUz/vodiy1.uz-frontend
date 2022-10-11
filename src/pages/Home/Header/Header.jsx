@@ -7,9 +7,6 @@ import { V1 } from '../../../context/context';
 
 const Header = (props) => {
   var til = props.til 
-  // const text1 = "Озарбойжон-Арманистон можароси тарихи. Сталин қарори, «дўстлик рамзи» сифатида берилган ер ва «Ҳалқа» операцияси"
-  // const text2 = "Арманистон-Озарбойжон чегараси ҳозирги кунда дунёдаги энг қайноқ нуқталардан бири ҳисобланади. Икки халқнинг бир-бирига қарши қурилган мафкураси бу миллатларни муросасиз рақибларга айлантирди. Муаммо илдизи қаерда? Нега Жанубий Казказда аниқ чегаралар ўрнатиш мураккаб муаммо ҳисобланади?"
-  
   const scrollTop = () =>{
     window.scrollTo(0 ,0)
   }
@@ -22,8 +19,7 @@ const Header = (props) => {
               className="header__left"
               onClick={scrollTop}
               style={{
-                // background:`url(${header})`,
-                background:`url(${BaseUrl+x.oxrgi.img})`
+                background:`url(${BaseUrl+x.oxrgi?.img})`
               }}
             >
               <h1>

@@ -56,6 +56,11 @@
           flex-direction: column;
 }
 
+.mySwiper__box .swiper-slide:hover p {
+  color: #008000;
+  text-shadow: 0px 0px 4px #ffffff;
+}
+
 .mySwiper__box .swiper-slide p {
   font-style: normal;
   font-weight: 600;

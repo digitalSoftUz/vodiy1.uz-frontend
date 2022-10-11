@@ -47,6 +47,13 @@
   font-size: 18px;
   line-height: 22px;
   color: #000000;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+.single__item:hover p {
+  color: #008000;
+  text-shadow: 0px 0px 4px #ffffff;
 }
 
 .single__center h1 {
