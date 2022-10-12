@@ -3,16 +3,23 @@ import { useTranslation } from "react-i18next";
 import { Facebook, Telegram, Instagram, Youtube, Logof } from '../assets/icons';
 import { BaseUrl } from '../contans';
 import axios from "axios"
+import { Link } from 'react-router-dom';
 
 const Footer = (props) => {
   var til = props.til
+  var menyu = props.menyu
+  var menyuL = menyu.length / 2
+  var menyu1 = props.menyu.slice(0, menyuL)
+  var menyu2 = props.menyu.slice(menyuL)
   const { t } = useTranslation()
   const [data, setData] = useState([]);
+  const scrollTop = () =>{
+    window.scrollTo(0 ,0)
+  }
   const getNews = () =>{
     axios.get(`${BaseUrl}api/footer`).then((res)=>{
       const data = res?.data.footer[0]
       setData(data)
-      // console.log(data)
     })
   } 
   useEffect(()=>{
@@ -26,25 +33,32 @@ const Footer = (props) => {
             <p>{data.text}</p>
           </div>
           <div className='footer__link'>
-            <a href="/">{t("NAV1")}</a>
-            <a href="/">{t("FARGONA")}</a>
-            <a href="/">{t("ANDIJON")}</a>
-            <a href="/">{t("NAMANGAN")}</a>
-            <a href="/">{t("NAV3")}</a>
-            <a href="/">{t("NAV4")}</a>
-            <a href="/">{t("VIDEO")}</a>
-            <a href="/">{t("FOTO")}</a>
+            {menyu1.map((item, index)=>{
+              return(
+                <Link to={`/category/${item.id}`} key={index} onClick={scrollTop}>
+                  {
+                    til === "uz" ? item.name_uz
+                    : til === "ru" ? item.name_ru
+                    : item.name_en
+                  }
+                </Link>
+              )
+            })}
           </div>
           <div className='footer__link'>
-            <a href="/">{t("NAV5")}</a>
-            <a href="/">{t("NAV8")}</a>
-            <a href="/">{t("NAV6")}</a>
-            <a href="/">{t("OSH2")}</a>
-            <a href="/">{t("XOJAND")}</a>
-            <a href="/">{t("JAXON")}</a>
+            {menyu2.map((item, index)=>{
+              return(
+                <Link to={`/category/${item.id}`} key={index} onClick={scrollTop}>
+                  {
+                    til === "uz" ? item.name_uz
+                    : til === "ru" ? item.name_ru
+                    : item.name_en
+                  }
+                </Link>
+              )
+            })}
           </div>
           <div className='footer__info'>
-            {/* <img src={Footer__logo} alt="" /> */}
             <Logof/>
             <p>
               {t("ADDRESS")} 

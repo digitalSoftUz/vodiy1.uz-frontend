@@ -50,7 +50,8 @@ const SinglePage = (props) => {
                   til === "uz" ? item.text_uz
                   : til === "ru" ? item.text_ru
                   : item.text_en
-                 }}></p>
+                 }}>
+              </p>
             </div>
           </div>
           <div className='single__news single__right'>

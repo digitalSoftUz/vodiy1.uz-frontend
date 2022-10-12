@@ -72,11 +72,13 @@
 
 .mySwiper__box .slider__img {
   max-width: 100%;
+  height: 350px;
   overflow: hidden;
 }
 
 .mySwiper__box .slider__img img {
   width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }

@@ -55,11 +55,11 @@ const Main = (props) => {
             </div>
 
             <div className="main">
-              <div className="main__left">
+              <div className="main__left b_bot">
                 <h1 className='box__title'>{t("REYTING")}</h1>
                 <Reyting til={til}/>
               </div>
-              <div className="main__right">
+              <div className="main__right b_bot">
                 <h1 className='box__title'>{t("F_V")}</h1>
                 <Card6 data={x.songi15.slice(0, 6)} til={til}/>
               </div>
@@ -78,11 +78,26 @@ const Main = (props) => {
             <CardBox data={x.namangan} til={til}/>
             <h1 className='box__title'>{t("FARGONA")}</h1>
             <CardBox data={x.fargona} til={til}/> */}
-            <h1 className='box__title'>{t("ANDIJON")} - {t("NAMANGAN")} - {t("FARGONA")}</h1>
-            <div className="card__box__container">
-              <div className='slider__box'><Slider til={til} data={x.andijon}/></div>
-              <div className='slider__box'><Slider til={til} data={x.namangan}/></div>
-              <div className='slider__box'><Slider til={til} data={x.fargona}/></div>
+            {/* <h1 className='box__title'>{t("ANDIJON")} - {t("NAMANGAN")} - {t("FARGONA")}</h1> */}
+            <div className="card__box__container b_bot">
+              <div>
+                <h1 className='box__title'>{t("ANDIJON")}</h1>
+                <div className='slider__box'>
+                  <Slider til={til} data={x.andijon}/>
+                </div>
+              </div>
+              <div>
+                <h1 className='box__title'>{t("NAMANGAN")}</h1>
+                <div className='slider__box'>
+                  <Slider til={til} data={x.namangan}/>
+                </div>
+              </div>
+              <div>
+                <h1 className='box__title'>{t("FARGONA")}</h1>
+                <div className='slider__box'>
+                  <Slider til={til} data={x.fargona}/>
+                </div>
+              </div>
             </div>
             <h1 className='box__title'>{t("OSH")}</h1>
             <Slider2 til={til} data={x.andijon}/>

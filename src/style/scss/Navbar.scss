@@ -217,6 +217,7 @@
   }
   .nav__top{
     .nav__links{
+      // padding-left: 10px;
       position: fixed;
       flex-direction: column;
       justify-content: flex-start;
@@ -228,7 +229,7 @@
       transition: 0.5s linear;
       z-index: 10;
       a{
-        width: 100%;
+        width: 280px;
         height: 60px;
         span{
           width: 100%;

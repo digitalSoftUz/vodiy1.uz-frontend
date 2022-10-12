@@ -19,7 +19,7 @@ const Header = (props) => {
               className="header__left"
               onClick={scrollTop}
               style={{
-                background:`url(${BaseUrl+x.oxrgi?.img})`
+                "--bg" : x.oxrgi.length === 0 ? "" : `url(${BaseUrl+x.oxrgi?.img})`
               }}
             >
               <h1>

@@ -320,7 +320,7 @@
     z-index: 10;
   }
   .nav__top .nav__links a {
-    width: 100%;
+    width: 280px;
     height: 60px;
   }
   .nav__top .nav__links a span {

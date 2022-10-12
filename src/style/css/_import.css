@@ -10,8 +10,8 @@
 @import url(./Category.css);
 
 body {
-  height: 100%;
-  width: 100%;
+  /* height: 100%;
+  width: 100%; */
   -webkit-font-smoothing: antialiased;
 }
 .ipl-progress-indicator.available {
