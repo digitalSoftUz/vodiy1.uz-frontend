@@ -52,6 +52,10 @@
   flex-direction: column;
   align-items: flex-start;
   position: relative;
+  .header__info{
+    display: flex;
+    align-items: center;
+  }
   &::after{
     content: "";
     display: block;
@@ -72,8 +76,9 @@
     color: #B0B0B0;
     margin-bottom: 7px;
     margin-top: 15px;
+    margin-right: 10px;
     svg{
-      margin-right: 10px;
+      margin: 0 5px 0 0;
     }
   }
   a{

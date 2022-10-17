@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import App from './App';
 import ReactDOM from 'react-dom/client';
-// import FallbackLoading from './FallbackLoading';
+import FallbackLoading from './FallbackLoading';
 import Loading from './components/Loading';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from "react-router-dom";
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-      <Suspense fallback={Loading}>
+      <Suspense fallback={FallbackLoading}>
         <StyledEngineProvider injectFirst>
           <App />
         </StyledEngineProvider>

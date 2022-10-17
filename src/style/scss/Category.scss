@@ -28,6 +28,25 @@
 .search__items{
   grid-template-columns: repeat(4, 1fr);
 }
+.more__btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  button{
+    width: 180px;
+    height: 40px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    background: #008000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
 
 @media (max-width:1300px) {
   .category__main{

@@ -1,0 +1,158 @@
+.up__banner {
+  -webkit-box-flex: 0.6;
+      -ms-flex-positive: 0.6;
+          flex-grow: 0.6;
+  height: 75px;
+}
+
+.up__banner a {
+  margin: 0 5px;
+}
+
+.up__banner img {
+  height: 65px;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.up__banner img:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.brand-wheel {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  height: 75px;
+  --animationspeed: 20s;
+  --animationdelay: calc(var(--animationspeed) / 2);
+}
+
+.brand-wheel::before {
+  position: absolute;
+  background-image: -webkit-gradient(linear, left top, right top, from(white), to(rgba(255, 255, 255, 0)));
+  background-image: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 100%;
+  width: 5%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.brand-wheel::after {
+  position: absolute;
+  background-image: -webkit-gradient(linear, right top, left top, from(white), to(rgba(255, 255, 255, 0)));
+  background-image: linear-gradient(to left, white 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 100%;
+  width: 5%;
+  z-index: 2;
+  pointer-events: none;
+  right: 0;
+}
+
+.brand-slide {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  position: absolute;
+  -webkit-animation-name: slidelogo;
+          animation-name: slidelogo;
+  -webkit-animation-duration: var(--animationspeed);
+          animation-duration: var(--animationspeed);
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  min-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.brand-slide.delay {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-animation-name: slidelogo2;
+          animation-name: slidelogo2;
+}
+
+.brand-wheel:hover .brand-slide {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+.logo-div {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-animation: fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+          animation: fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+  padding: 0 20px 0 20px;
+}
+
+@-webkit-keyframes slidelogo {
+  from {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  to {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+
+@keyframes slidelogo {
+  from {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  to {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes slidelogo2 {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@keyframes slidelogo2 {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@media (max-width: 750px) {
+  .up__banner {
+    display: none;
+  }
+}

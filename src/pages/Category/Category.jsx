@@ -1,83 +1,113 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BaseUrl } from '../../contans';
-import { Calendar } from '../../assets/icons';
+import { Calendar, Views } from '../../assets/icons';
 import { Link, useParams } from 'react-router-dom';
 import CardSkeleton from '../../components/CardSkeleton';
 import ListSkeleton from '../../components/ListSkeleton';
+import { useTranslation } from 'react-i18next';
 
 const Category = (props) => {
   var til = props.til
+  var {t} = useTranslation()
   var vodiybugun9 = props.vodiybugun9
   const id = useParams().id
-  const [data, setdata] = useState();
-  const [load, setLoad] = useState(true);
+  const [data, setdata] = useState([]);
+  const [load, setLoad] = useState(false);
+  const [page, setPage] = useState(12);
+  const [dataLoad, setDataLoad] = useState(false);
   // const [first, setfirst] = useState();
-
   const scrollTop = () =>{
     window.scrollTo(0 ,0)
   }
-  useEffect(()=>{
-    async function GetNews() {
-      setLoad(true)
-      try {
-        const res = await axios.get(`${BaseUrl}api/menyu/${id}`);
-        if (res) {
-          setTimeout(() => {
-            setdata(res.data.menyus);
-            setLoad(false)
-          }, 900);
-        }
-      } catch (err) {
-        console.log(err);
-        setLoad(false)
+  const LoadMore = () => {
+    setLoad(true)
+    setTimeout(() => {
+      setPage((prevValue) => prevValue + 12)
+      setLoad(false)
+    }, 500);
+  }
+  async function GetNews() {
+    setDataLoad(true)
+    try {
+      const res = await axios.get(`${BaseUrl}api/menyu/${id}`);
+      if (res) {
+        setTimeout(() => {
+          setDataLoad(false)
+          setdata(res.data.menyus)
+        }, 600);
       }
+    } catch (err) {
+      console.log(err);
     }
+  }
+  useEffect(()=>{
     GetNews()
-  },[id])
+    if (dataLoad) {
+      setPage(12)
+    }
+  },[id, page])
   return (
     <React.Fragment>
       <div className="container">
-        <Link to={``} className="category__top">
+        { dataLoad 
+          ? 
+          <div className="category__main">
+            <div className="category__items">
+              <CardSkeleton/>
+            </div>
+            <div className="category__news single__news">
+              <ListSkeleton/>
+            </div>
+          </div>
+          :
+          <div className="category__main">
           <div>
-            <img src="{cat1.img}" alt="" />
+            <div className="category__items">
+              {data?.slice(0, page).map((item, index)=>{
+                    return(
+                      <Link to={`/news/${item.id}`} onClick={scrollTop} className="card__item" key={index}>
+                        <div className='card__img'>
+                          <img src={BaseUrl+item.img} alt="" />
+                        </div>
+                        <div className='news__info'>
+                          <span><Views/>{item.order}</span>
+                          <span><Calendar/>{item.sana}</span>
+                        </div>
+                        <p>
+                          { 
+                            til === "uz" ? item.title_uz
+                            : til === "ru" ? item.title_ru
+                            : item.title_en
+                          } 
+                        </p>
+                      </Link>
+                    )
+                  })
+              }
+              {load ? <CardSkeleton/> 
+                : "" 
+              }
+            </div>
+            <div className='more__btn'>
+              {page >= data.length 
+                ? ""
+                : <button onClick={LoadMore}>{t("MORE")}</button>
+              }
+            </div>
           </div>
-          <div>
-            {/* <h1></h1>
-            <p></p>
-            <span></span> */}
-          </div>
-        </Link>
-        <div className="category__main">
-          <div className="category__items">
-            {load
-              ? <CardSkeleton/> 
-              : data?.map((item, index)=>{
-                  return(
-                    <Link to={`/news/${item.id}`} onClick={scrollTop} className="card__item" key={index}>
-                      <div className='card__img'>
-                        <img src={BaseUrl+item.img} alt="" />
-                      </div>
-                      <span><Calendar/>{item.sana}</span>
-                      <p>
-                        { 
-                          til === "uz" ? item.title_uz
-                          : til === "ru" ? item.title_ru
-                          : item.title_en
-                        } 
-                      </p>
-                    </Link>
-                  )
-                })
-            }
-          </div>
+          
           <div className="category__news single__news">
-            {load
-              ? <ListSkeleton/> 
-              : vodiybugun9.map((item, index)=>{
+            {
+            // load ? <ListSkeleton/> 
+            //   : 
+              vodiybugun9.map((item, index)=>{
                 return(
                   <Link to={`/news/${item.id}`} className="single__item b_bot" key={index}>
-                    <span><Calendar/>{item.sana}</span>
+                    <div className='news__info'>
+                      <span><Views/>{item.order}</span>
+                      <span><Calendar/>{item.sana}</span>
+                    </div>
                     <p>
                       { 
                         til === "uz" ? item.title_uz
@@ -90,6 +120,7 @@ const Category = (props) => {
               })}
           </div>
         </div>
+        }
       </div>
     </React.Fragment>
   )

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 // import { BaseUrl } from '../../../contans';
-import { Calendar } from '../../../assets/icons';
+import { Calendar, Views } from '../../../assets/icons';
 
 const CardList = (props) => {
   var data = props.data
@@ -19,6 +19,7 @@ const CardList = (props) => {
                 <img src={BaseUrl+item.img} alt="" />
               </div> */}
               <div className='list__content'>
+                <span><Views/>{item.order} <Calendar/>{item.sana}</span>
                 <h1>
                   { 
                     til === "uz" ? item.title_uz
@@ -26,14 +27,13 @@ const CardList = (props) => {
                     : item.title_en
                   } 
                 </h1>
-                <p>
+                {/* <p>
                   {
                     til === "uz" ? item.description_uz
                     : til === "ru" ? item.description_ru
                     : item.description_en
                   }
-                </p>
-                <span><Calendar/>{item.sana}</span>
+                </p> */}
               </div>
             </Link>
           )

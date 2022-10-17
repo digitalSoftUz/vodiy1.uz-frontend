@@ -34,11 +34,16 @@
       -ms-flex-pack: center;
           justify-content: center;
   min-height: 350px;
+  margin-top: 20px;
 }
 
 .mySwiper__box {
   height: 100%;
   padding-bottom: 30px;
+}
+
+.mySwiper__box .swiper-pagination-bullet-active {
+  background: #008000;
 }
 
 .mySwiper__box .swiper-slide {

@@ -11,20 +11,19 @@ class Mode extends Component {
     this.state = { 
       til: i18next.language,
       load: true,
-      data:[],
       menyu:[],
       oxrgi:[],
-      sport5:[],
       songi5:[],
-      xojand:[],
       songi15:[],
-      minbar5:[],
-      andijon:[],
-      fargona:[],
-      namangan:[],
-      vodiybugun9:[],
-      sorovnomalar5:[],
-      surushtiruvlar5:[],
+      data1:[],
+      data2:[],
+      data3:[],
+      data4:[],
+      data5:[],
+      data6:[],
+      data7:[],
+      data8:[],
+      data9:[],
     }
   }
   handleRu = () =>{
@@ -47,17 +46,17 @@ class Mode extends Component {
         // data:data,
         oxrgi: data?.oxrgi[0],
         menyu: data?.menyu,
-        xojand: data?.xojand,
-        sport5: data?.sport5,
         songi5: data?.songi5,
-        songi15: data?.songi15,
-        minbar5: data?.minbar5,
-        andijon: data?.andijon,
-        fargona: data?.fargona,
-        namangan: data?.namangan,
-        vodiybugun9: data?.vodiybugun9,
-        sorovnomalar5: data?.sorovnomalar5,
-        surushtiruvlar5: data?.surushtiruvlar5
+        // 
+        data1: data?.xabarlar[0],
+        data2: data?.xabarlar[1],
+        data3: data?.xabarlar[2],
+        data4: data?.xabarlar[3],
+        data5: data?.xabarlar[4],
+        data6: data?.xabarlar[5],
+        data7: data?.xabarlar[6],
+        data8: data?.xabarlar[7],
+        data9: data?.xabarlar[8],
       })
     })
   }

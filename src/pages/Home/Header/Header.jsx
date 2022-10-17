@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar } from '../../../assets/icons';
+import { Calendar, Views } from '../../../assets/icons';
 import { BaseUrl } from '../../../contans';
 import { V1 } from '../../../context/context';
 // import header from "../../../assets/Images/Header.png";
@@ -41,7 +41,11 @@ const Header = (props) => {
               {x.songi5?.map((item, index)=>{
                 return(
                   <div className='header__item' key={index}>
-                    <span><Calendar/>{item.sana}</span>
+                    <div className='header__info'>
+                      <span><Views/>{item.order}</span>
+                      <span><Calendar/>{item.sana}</span>
+                    </div>
+                    
                     <Link to={`news/${item.id}`}>
                       {
                         til === "uz" ? item.title_uz

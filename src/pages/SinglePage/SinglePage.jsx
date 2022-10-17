@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BaseUrl } from '../../contans';
 import { useParams } from 'react-router-dom';
-import { Calendar } from '../../assets/icons';
+import { Calendar, Views } from '../../assets/icons';
 
 const SinglePage = (props) => {
   var til = props.til
@@ -32,7 +32,10 @@ const SinglePage = (props) => {
             {data1?.map((item, index)=>{
               return(
                 <a href={`${item.id}`} onClick={scrollTop} className="single__item b_bot" key={index}>
-                  <span><Calendar/> {item.sana}</span>
+                  <div className='single__info'>
+                    <span><Views/>{item.order}</span>
+                    <span><Calendar/>{item.sana}</span>
+                  </div>
                   <p>
                     { 
                       til === "uz" ? item.title_uz
@@ -58,7 +61,10 @@ const SinglePage = (props) => {
             {data2?.map((item, index)=>{
               return(
                 <a href={`${item.id}`} className="single__item b_bot" key={index}>
-                  <span><Calendar/> {item.sana}</span>
+                  <div className='news__info'>
+                    <span><Views/>{item.order}</span>
+                    <span><Calendar/>{item.sana}</span>
+                  </div>
                   <p>
                     { 
                       til === "uz" ? item.title_uz

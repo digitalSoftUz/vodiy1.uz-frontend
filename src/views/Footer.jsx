@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from "react-i18next";
-import { Facebook, Telegram, Instagram, Youtube, Logof } from '../assets/icons';
+import { Facebook, Telegram, Instagram, Youtube, Logof, Twitter, Tiktok } from '../assets/icons';
 import { BaseUrl } from '../contans';
 import axios from "axios"
 import { Link } from 'react-router-dom';
@@ -19,6 +19,7 @@ const Footer = (props) => {
   const getNews = () =>{
     axios.get(`${BaseUrl}api/footer`).then((res)=>{
       const data = res?.data.footer[0]
+      // console.log(data)
       setData(data)
     })
   } 
@@ -30,7 +31,13 @@ const Footer = (props) => {
       <div className="footer__container">
         <div className="footer container">
           <div className='footer__description'>
-            <p>{data.text}</p>
+            <p>
+              {
+                til === "uz" ? data.text_uz
+                : til === "ru" ? data.text_ru
+                : data.text_en
+              }
+            </p>
           </div>
           <div className='footer__link'>
             {menyu1.map((item, index)=>{
@@ -70,10 +77,12 @@ const Footer = (props) => {
             </p>
             <p>{t("TEL")} +99899 123 45 67</p>
             <div className='socialsets'>
-              <a href={`${data.facebook}`}><Facebook /></a>
               <a href={`${data.telegram}`}><Telegram /></a>
-              <a href={`${data.instagram}`}><Instagram /></a>
+              <a href={`${data.facebook}`}><Facebook /></a>
               <a href={`${data.youtbe}`}><Youtube /></a>
+              <a href={`${data.instagram}`}><Instagram /></a>
+              <a href={`${data.twitter}`}><Twitter /></a>
+              <a href={`${data.tiktok}`}><Tiktok /></a>
             </div>
           </div>
         </div>

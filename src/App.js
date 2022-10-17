@@ -4,12 +4,14 @@ import Footer from './views/Footer';
 import Navbar from './views/Navbar';
 import Mode from './context/context';
 import { V1 } from './context/context';
+import Photo from './pages/Photo/Photo';
+import Loading from './components/Loading';
 import Search from './pages/Search/Search';
 import HomePage from './pages/Home/HomePage';
+import Reyting from './pages/Reyting/Reyting';
 import Category from './pages/Category/Category';
 import { Routes, Route } from 'react-router-dom';
 import SinglePage from './pages/SinglePage/SinglePage';
-import Loading from './components/Loading';
 
 class App extends React.Component {
   // fake authentication Promise
@@ -59,8 +61,10 @@ class App extends React.Component {
                   <Navbar til={x.til}/>
                   <Routes>
                     <Route path='/' index element={<HomePage/>}/>
+                    <Route path='reyting' element={<Reyting/>}/>
+                    <Route path='photos' element={<Photo/>}/>
                     <Route path='search=:word' element={<Search til={x.til}/>}/>
-                    <Route path='category/:id' element={<Category til={x.til} vodiybugun9={x.vodiybugun9}/>}/>
+                    <Route path='category/:id' element={<Category til={x.til} vodiybugun9={x.songi5}/>}/>
                     <Route path='news/:id' element={<SinglePage til={x.til} songi15={x.songi15}/>}/>
                   </Routes>
                 </div>

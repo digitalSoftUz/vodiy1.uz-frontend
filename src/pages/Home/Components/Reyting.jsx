@@ -14,9 +14,8 @@ const colors = scaleOrdinal(schemeCategory10).range();
 const Reyting = (props) => {
   const { t } = useTranslation()
   var til = props.til 
-  // const [num, setnum] = useState(4);
-  localStorage.setItem("ovoz", null)
-  const num = localStorage.getItem("ovoz")
+  const [num, setNum] = useState(window.localStorage.getItem("ovoz"));
+  // const num = )
   // console.log(num)
   const [savolId, setSavolId] = useState();
   const [savol, setSavol] = useState();
@@ -25,20 +24,6 @@ const Reyting = (props) => {
   const [alertText, setalertText] = useState("");
   const [status, setstatus] = useState("error");
   const [AllCount, setAllCount] = useState(0)
-  useEffect(()=>{
-    axios.get(`${BaseUrl}api/savol`).then((res)=>{
-      var data = res.data
-      setSavol(data.savol)
-      setSavolId(data.savol.id)
-      setJavob(data.hudud)
-      // console.log(data)
-      let all_count = 0
-      for (let dt of data.hudud){
-        all_count = all_count + Number(dt.javob_count)
-      }
-      setAllCount(all_count)
-    })
-  },[])
   const handleClose = () =>{
     setmyalert(false)
   }
@@ -49,9 +34,10 @@ const Reyting = (props) => {
     }
     axios.post(`${BaseUrl}api/ovoz`, data)
       .then((res)=>{
-        console.log(res)
+        // console.log(res)
         if (res.data === "ok") {
           localStorage.setItem("ovoz", p)
+          setNum(p)
           setalertText(t("REYTING_TITLE1"))
           setstatus("success")
         } else{
@@ -61,6 +47,22 @@ const Reyting = (props) => {
         setmyalert(true)
       })
   }
+  useEffect(()=>{
+    axios.get(`${BaseUrl}api/savol`).then((res)=>{
+      var data = res.data
+      console.log(data)
+      setSavol(data.savol)
+      setSavolId(data.savol.id)
+      setJavob(data.hudud)
+      // console.log(data)
+      let all_count = 0
+      for (let dt of data.hudud){
+        all_count = all_count + Number(dt.javob_count)
+      }
+      setAllCount(all_count)
+    })
+    // handleOvoz()
+  },[num])
   return ( 
     <React.Fragment>
       <h2 className='reyt__title'>
@@ -93,17 +95,17 @@ const Reyting = (props) => {
               <div onClick={()=>{handleOvoz(item.id)}} className="radio">
                 <Circle 
                   color={colors[index % 20]} 
-                  color2={num === index ? colors[index % 20] : "#fff"}
-                  pick={num === item.id ? 17.5 : 0}
+                  color2={num == item.id ? colors[index % 20] : "#fff"}
+                  pick={num == item.id ? 17.5 : 0}
                 />
               </div>
               <Line 
-                percent={(100 / AllCount)*item.javob_count} 
+                percent={AllCount === 0 ? 0 : (100 / AllCount)*item.javob_count} 
                 // percent={num === index ? item.num+1 : item.num} 
                 strokeWidth={2} 
                 strokeColor={colors[index % 20]}
               />
-              <b>{(100 / AllCount)*item.javob_count}%</b>
+              <b>{AllCount === 0 ? 0 : (100 / AllCount)*item.javob_count}%</b>
               {/* <b>{num === index ? item.num+1 : item.num}%</b> */}
             </div>
           </div>

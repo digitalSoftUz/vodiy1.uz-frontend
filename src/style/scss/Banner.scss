@@ -1,0 +1,109 @@
+.up__banner{
+  // width: 500px;
+  flex-grow: 0.6;
+  height: 75px;
+  // background: red;
+  a{
+    margin: 0 5px;
+  }
+  img{
+    height: 65px;
+    transition: .3s ease-in-out;
+    &:hover{
+      transform: scale(1.05);
+    }
+  }
+}
+.brand-wheel {
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  height: 75px;
+  --animationspeed: 20s;
+  --animationdelay: calc(var(--animationspeed) / 2);
+  
+}
+// @media (max-width:1000px){
+//   .brand-wheel{
+//     height: 70px;
+//   }
+// }
+.brand-wheel::before {
+  position: absolute;
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 255, 255) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  content: "";
+  height: 100%;
+  width: 5%;
+  z-index: 2;
+  pointer-events: none;
+}
+.brand-wheel::after {
+  position: absolute;
+  background-image: linear-gradient(
+    to left,
+    rgb(255, 255, 255) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  content: "";
+  height: 100%;
+  width: 5%;
+  z-index: 2;
+  pointer-events: none;
+  right: 0;
+}
+
+.brand-slide {
+  flex-shrink: 0;
+  position: absolute;
+  animation-name: slidelogo;
+  animation-duration: var(--animationspeed);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.brand-slide.delay {
+  transform: translateX(100%);
+  animation-name: slidelogo2;
+}
+
+.brand-wheel:hover .brand-slide {
+  animation-play-state: paused;
+}
+.logo-div {
+  display: inline-flex;
+  align-self: center;
+  animation: fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+  padding: 0 20px 0 20px;
+}
+
+@keyframes slidelogo {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slidelogo2 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@media (max-width:750px) {
+  .up__banner{
+    display: none;
+  }
+}

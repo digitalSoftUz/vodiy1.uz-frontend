@@ -14,6 +14,9 @@ const Navbar = (props) => {
   const handleBurger = () =>{
     setburger(!burger)
   }
+  const handleBurgerClose = () =>{
+    setburger(true)
+  }
   return ( 
     <V1.Consumer>
       {(x)=>{
@@ -31,6 +34,7 @@ const Navbar = (props) => {
                         to={`category/${i.id}`} 
                         key={index}
                         className="nav__item"
+                        onClick={handleBurgerClose}
                         // onClick={()=>{setNav_Active(i.id)}}
                       ><span>
                         {

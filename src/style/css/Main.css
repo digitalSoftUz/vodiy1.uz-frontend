@@ -8,6 +8,8 @@
 
 .b_bot {
   position: relative;
+  margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .b_bot::after {

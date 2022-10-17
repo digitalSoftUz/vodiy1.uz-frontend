@@ -9,98 +9,148 @@ import Reyting from "../Components/Reyting";
 import CardList from '../Components/CardList';
 import { V1 } from '../../../context/context';
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom"
+import EastIcon from '@mui/icons-material/East';
 
 const Main = (props) => {
   var til = props.til
   const { t } = useTranslation()
+  const scrollTop = () =>{
+    window.scrollTo(0 ,0)
+  }
   return (  
     <V1.Consumer>
       {(x)=>{
+        // console.log(x.songi15)
         return(
           <div className="container">
             <div className="main">
               <div className="main__left">
-                <h1 className='box__title'>{t("LASTNEWS")}</h1>
+                <Link to={`news`} onClick={scrollTop} className='box__title'>{t("LASTNEWS")} <div><span>{t("ALL")}</span> <EastIcon/></div></Link>
                 <CardList data={x.songi15} til={til}/>
               </div>
               <div className="main__right">
-                <h1 className='box__title'>{t("NAV2")}</h1>
+                <Link to={`category/${x.data1?.id}`} onClick={scrollTop} className='box__title'>
+                  {
+                    til === "uz" ? x.data1?.name_uz
+                    : til === "ru" ? x.data1?.name_ru
+                    : x.data1?.name_en
+                  } 
+                  <div><span>{t("ALL")}</span> <EastIcon/></div>
+                </Link>
                 <div className="b_bot">
-                  <Card5 data={x.vodiybugun9.slice(0, 5)} til={til}/>
+                  <Card5 data={x.data1?.xabar} til={til}/>
                 </div>
-                <h1 className='box__title'>{t("NAV4")}</h1>
+                <Link to={`category/${x.data2?.id}`} onClick={scrollTop} className='box__title'>
+                  {
+                    til === "uz" ? x.data2?.name_uz
+                    : til === "ru" ? x.data2?.name_ru
+                    : x.data2?.name_en
+                  } 
+                  <div><span>{t("ALL")}</span> <EastIcon/></div>
+                </Link>
                 <div className="b_bot">
-                  <Card5 data={x.sorovnomalar5} til={til}/>
+                  <Card5 data={x.data2?.xabar} til={til}/>
                 </div>
-                <h1 className='box__title'>{t("MAQOLA")}</h1>
+                <Link to={`category/${x.data3?.id}`} onClick={scrollTop} className='box__title'>
+                  {
+                    til === "uz" ? x.data3?.name_uz
+                    : til === "ru" ? x.data3?.name_ru
+                    : x.data3?.name_en
+                  }  
+                  <div><span>{t("ALL")}</span> <EastIcon/></div>
+                </Link>
                 <div className="b_bot">
-                  <Card5 data={x.surushtiruvlar5} til={til}/>
+                  <Card5 data={x.data3?.xabar} til={til}/>
                 </div>
               </div>
             </div>
 
             <div className="main">
               <div className="main__left">
-                <h1 className='box__title'>{t("VODIY")}</h1>
+              <Link to={`category/${x.data5?.id}`} onClick={scrollTop} className='box__title'>
+                  {
+                    til === "uz" ? x.data5?.name_uz
+                    : til === "ru" ? x.data5?.name_ru
+                    : x.data5?.name_en
+                  }  
+                  <div><span>{t("ALL")}</span> <EastIcon/></div>
+                </Link>
                 <div className="b_bot">
-                  <Card5 data={x.sport5} til={til}/>
+                  <Card5 data={x.data5?.xabar} til={til}/>
                 </div>
               </div>
               <div className="main__right">
-                <h1 className='box__title'>{t("MINBAR")}</h1>
+              <Link to={`category/${x.data4?.id}`} onClick={scrollTop} className='box__title'>
+                  {
+                    til === "uz" ? x.data4?.name_uz
+                    : til === "ru" ? x.data4?.name_ru
+                    : x.data4?.name_en
+                  }  
+                  <div><span>{t("ALL")}</span> <EastIcon/></div>
+                </Link>
                 <div className="b_bot">
-                  <Card5 data={x.minbar5} til={til}/>
+                  <Card5 data={x.data4?.xabar} til={til}/>
                 </div>
               </div>
             </div>
 
             <div className="main">
               <div className="main__left b_bot">
-                <h1 className='box__title'>{t("REYTING")}</h1>
+                <Link to={`reyting`} onClick={scrollTop} className='box__title'>{t("REYTING")} <div><span>{t("ALL")}</span> <EastIcon/></div></Link>
                 <Reyting til={til}/>
               </div>
               <div className="main__right b_bot">
-                <h1 className='box__title'>{t("F_V")}</h1>
+                <Link to={`photos`} onClick={scrollTop} className='box__title'>{t("F_V")} <div><span>{t("ALL")}</span> <EastIcon/></div></Link>
                 <Card6 data={x.songi15.slice(0, 6)} til={til}/>
               </div>
             </div>
-            {/* <div className="main">
-              <div className='main__left'>
-                
-              </div>
-              <div className='main__right b_bot'>
-                <Card4 data={x.vodiybugun9.slice(5, 9)} til={til}/>
-              </div>
-            </div> */}
-            {/* <h1 className='box__title'>{t("ANDIJON")}</h1>
-            <CardBox data={x.andijon} til={til}/>
-            <h1 className='box__title'>{t("NAMANGAN")}</h1>
-            <CardBox data={x.namangan} til={til}/>
-            <h1 className='box__title'>{t("FARGONA")}</h1>
-            <CardBox data={x.fargona} til={til}/> */}
-            {/* <h1 className='box__title'>{t("ANDIJON")} - {t("NAMANGAN")} - {t("FARGONA")}</h1> */}
             <div className="card__box__container b_bot">
-              <div>
-                <h1 className='box__title'>{t("ANDIJON")}</h1>
+              <div className='card__box__content'>
+                <Link to={`category/${x.data6?.id}`} onClick={scrollTop} className='box__title'>
+                  {
+                    til === "uz" ? x.data6?.name_uz
+                    : til === "ru" ? x.data6?.name_ru
+                    : x.data6?.name_en
+                  } 
+                </Link>
                 <div className='slider__box'>
-                  <Slider til={til} data={x.andijon}/>
+                  <Slider til={til} data={x.data6?.xabar}/>
                 </div>
               </div>
-              <div>
-                <h1 className='box__title'>{t("NAMANGAN")}</h1>
+              <div className='card__box__content'>
+                <Link to={`category/${x.data7?.id}`} onClick={scrollTop} className='box__title'>
+                  {
+                    til === "uz" ? x.data7?.name_uz
+                    : til === "ru" ? x.data7?.name_ru
+                    : x.data7?.name_en
+                  }   
+                </Link>
                 <div className='slider__box'>
-                  <Slider til={til} data={x.namangan}/>
+                  <Slider til={til} data={x.data7?.xabar}/>
                 </div>
               </div>
-              <div>
-                <h1 className='box__title'>{t("FARGONA")}</h1>
+              <div className='card__box__content'>
+                <Link to={`category/${x.data8?.id}`} onClick={scrollTop} className='box__title'>
+                  {
+                    til === "uz" ? x.data8?.name_uz
+                    : til === "ru" ? x.data8?.name_ru
+                    : x.data8?.name_en
+                  }
+                </Link>
                 <div className='slider__box'>
-                  <Slider til={til} data={x.fargona}/>
+                  <Slider til={til} data={x.data8?.xabar}/>
                 </div>
               </div>
             </div>
-            <h1 className='box__title'>{t("OSH")}</h1>
-            <Slider2 til={til} data={x.andijon}/>
+            <Link to={`category/${x.data9?.id}`} onClick={scrollTop} className='box__title'>
+              {
+                til === "uz" ? x.data9?.name_uz
+                : til === "ru" ? x.data9?.name_ru
+                : x.data9?.name_en
+              }
+            </Link>
+            <Slider2 til={til} data={x.data9?.xabar}/>
             {/* <CardBox data={x.xojand} til={til}/> */}
           </div>
         )

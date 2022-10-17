@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import { BaseUrl } from '../../contans';
 import { V1 } from '../../context/context';
-import { Calendar } from '../../assets/icons';
+import { Calendar, Views } from '../../assets/icons';
 import { Link, useParams } from 'react-router-dom';
 import CardSkeleton from '../../components/CardSkeleton';
 
@@ -47,7 +47,10 @@ const Search = (props) => {
                     <div className='card__img'>
                       <img src={BaseUrl+item.img} alt="" />
                     </div>
-                    <span><Calendar />{item.sana}</span>
+                    <div className='news__info'>
+                      <span><Views/>{item.order}</span>
+                      <span><Calendar/>{item.sana}</span>
+                    </div>
                     <p>
                       { 
                         til === "uz" ? item.title_uz
