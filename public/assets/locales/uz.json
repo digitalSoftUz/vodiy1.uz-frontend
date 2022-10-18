@@ -13,7 +13,7 @@
   "MINBAR":"Minbar",
   "VODIY":"Sport va san'at",
   "REYTING":"So‘rovnoma",
-  "REYTINGS":"So‘rovnoma",
+  "REYTINGS":"So‘rovnomalar",
   "REYTING_TITLE1":"Ovozingiz qabul qilindi",
   "REYTING_TITLE2":"Siz ovoz berib bo'lgansiz",
   "F_V":"Foto-Video yangiliklar",
@@ -31,5 +31,6 @@
   "OSH2":"Osh",
   "XOJAND":"Xo‘jand",
   "JAHON":"Jahon",
-  "ALL":"Barchasi"
+  "ALL":"Barchasi",
+  "OVOZ":"Ovoz"
 }

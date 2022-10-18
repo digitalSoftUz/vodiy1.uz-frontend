@@ -5,37 +5,53 @@ import { Calendar, Views } from '../../assets/icons';
 import { Link, useParams } from 'react-router-dom';
 import CardSkeleton from '../../components/CardSkeleton';
 import ListSkeleton from '../../components/ListSkeleton';
-import { useTranslation } from 'react-i18next';
+import Pagination from '@mui/material/Pagination';
+import { V1 } from '../../context/context';
 
 const Category = (props) => {
   var til = props.til
-  var {t} = useTranslation()
+  var load1 = props.load
   var vodiybugun9 = props.vodiybugun9
+  
+  // var num = 1
+  // localStorage.setItem("pages", JSON.stringify(num))
+  // var pages = localStorage.getItem("pages")
+  // console.log(pages)
+
   const id = useParams().id
   const [data, setdata] = useState([]);
   const [load, setLoad] = useState(false);
-  const [page, setPage] = useState(12);
-  const [dataLoad, setDataLoad] = useState(false);
-  // const [first, setfirst] = useState();
   const scrollTop = () =>{
     window.scrollTo(0 ,0)
   }
-  const LoadMore = () => {
-    setLoad(true)
+  const [pshow, setPshow] = useState(false);
+  const [page, setPage] = React.useState(1);
+  const [all, setAll] = useState();
+  const handleChange = (event, value) => {
+    setPage(value);
     setTimeout(() => {
-      setPage((prevValue) => prevValue + 12)
-      setLoad(false)
-    }, 500);
-  }
+      scrollTop()
+    }, 400);
+  };
+  // console.log(all)
   async function GetNews() {
-    setDataLoad(true)
+    setLoad(true)
     try {
-      const res = await axios.get(`${BaseUrl}api/menyu/${id}`);
+      const res = await axios.get(`${BaseUrl}api/menyu/${id}?page=${page}`);
       if (res) {
+        var data = res?.data
+        // console.log(data)
+        setAll(data?.meta?.last_page)
+        if (data?.meta?.last_page > 1) {
+          setPshow(true)
+        } else{
+          setPshow(false)
+        }
         setTimeout(() => {
-          setDataLoad(false)
-          setdata(res.data.menyus)
-        }, 600);
+          setdata(data?.data)
+          setLoad(false)
+        }, 500);
+        
       }
     } catch (err) {
       console.log(err);
@@ -43,86 +59,96 @@ const Category = (props) => {
   }
   useEffect(()=>{
     GetNews()
-    if (dataLoad) {
-      setPage(12)
+    if (load1) {
+      setPage(1)
     }
   },[id, page])
   return (
-    <React.Fragment>
-      <div className="container">
-        { dataLoad 
-          ? 
-          <div className="category__main">
-            <div className="category__items">
-              <CardSkeleton/>
+    <V1.Consumer>
+      {(x)=>{
+        return(
+          <div className="container">
+          { x.load 
+            ? 
+            <div className="category__main">
+              <div className="category__items">
+                <CardSkeleton/>
+              </div>
+              <div className="category__news single__news">
+                <ListSkeleton/>
+              </div>
             </div>
+            :
+            <div className="category__main">
+            <div>
+              <div className="category__items">
+                {
+                load 
+                ? <CardSkeleton/> 
+                : 
+                data?.map((item, index)=>{
+                  return(
+                    <Link to={`/news/${item.id}`} onClick={scrollTop} className="card__item" key={index}>
+                      <div className='card__img'>
+                        <img src={BaseUrl+item.img} alt="" />
+                      </div>
+                      <div className='news__info'>
+                        <span><Views/>{item.order}</span>
+                        <span><Calendar/>{item.sana}</span>
+                      </div>
+                      <p>
+                        { 
+                          til === "uz" ? item.title_uz
+                          : til === "ru" ? item.title_ru
+                          : item.title_en
+                        } 
+                      </p>
+                    </Link>
+                  )
+                })
+                }
+              </div>
+              <div className='more__btn'>
+                {pshow === false
+                  ? ""
+                  : <Pagination 
+                      count={all}
+                      variant="outlined" 
+                      shape="rounded"
+                      page={page} 
+                      onChange={handleChange}
+                    />
+                }
+              </div>
+            </div>
+            
             <div className="category__news single__news">
-              <ListSkeleton/>
+              {
+                vodiybugun9?.map((item, index)=>{
+                  return(
+                    <Link to={`/news/${item.id}`} className="single__item b_bot" key={index}>
+                      <div className='news__info'>
+                        <span><Views/>{item.order}</span>
+                        <span><Calendar/>{item.sana}</span>
+                      </div>
+                      <p>
+                        { 
+                          til === "uz" ? item.title_uz
+                          : til === "ru" ? item.title_ru
+                          : item.title_en
+                        }
+                      </p>
+                    </Link>
+                  )
+                })}
             </div>
           </div>
-          :
-          <div className="category__main">
-          <div>
-            <div className="category__items">
-              {data?.slice(0, page).map((item, index)=>{
-                    return(
-                      <Link to={`/news/${item.id}`} onClick={scrollTop} className="card__item" key={index}>
-                        <div className='card__img'>
-                          <img src={BaseUrl+item.img} alt="" />
-                        </div>
-                        <div className='news__info'>
-                          <span><Views/>{item.order}</span>
-                          <span><Calendar/>{item.sana}</span>
-                        </div>
-                        <p>
-                          { 
-                            til === "uz" ? item.title_uz
-                            : til === "ru" ? item.title_ru
-                            : item.title_en
-                          } 
-                        </p>
-                      </Link>
-                    )
-                  })
-              }
-              {load ? <CardSkeleton/> 
-                : "" 
-              }
-            </div>
-            <div className='more__btn'>
-              {page >= data.length 
-                ? ""
-                : <button onClick={LoadMore}>{t("MORE")}</button>
-              }
-            </div>
-          </div>
-          
-          <div className="category__news single__news">
-            {
-            // load ? <ListSkeleton/> 
-            //   : 
-              vodiybugun9.map((item, index)=>{
-                return(
-                  <Link to={`/news/${item.id}`} className="single__item b_bot" key={index}>
-                    <div className='news__info'>
-                      <span><Views/>{item.order}</span>
-                      <span><Calendar/>{item.sana}</span>
-                    </div>
-                    <p>
-                      { 
-                        til === "uz" ? item.title_uz
-                        : til === "ru" ? item.title_ru
-                        : item.title_en
-                      }
-                    </p>
-                  </Link>
-                )
-              })}
-          </div>
+          }
         </div>
-        }
-      </div>
-    </React.Fragment>
+        )
+      }}
+      
+    </V1.Consumer>
   )
 }
 

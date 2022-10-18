@@ -10,7 +10,7 @@ class Mode extends Component {
     super(props);
     this.state = { 
       til: i18next.language,
-      load: true,
+      load: false,
       menyu:[],
       oxrgi:[],
       songi5:[],
@@ -25,6 +25,16 @@ class Mode extends Component {
       data8:[],
       data9:[],
     }
+  }
+  handleLoad = () => {
+    this.setState({
+      load: true
+    })
+    setTimeout(() => {
+      this.setState({
+        load: false
+      })
+    }, 700);
   }
   handleRu = () =>{
     this.setState({til:"ru"})
@@ -69,6 +79,7 @@ class Mode extends Component {
           handleRu:this.handleRu,
           handleUz:this.handleUz,
           handleEn:this.handleEn,
+          handleLoad:this.handleLoad,
         }}
       >
         {this.props.children}

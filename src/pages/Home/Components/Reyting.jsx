@@ -50,14 +50,14 @@ const Reyting = (props) => {
   useEffect(()=>{
     axios.get(`${BaseUrl}api/savol`).then((res)=>{
       var data = res.data
-      console.log(data)
+      // console.log(data.savol.variant)
       setSavol(data.savol)
       setSavolId(data.savol.id)
-      setJavob(data.hudud)
+      setJavob(data.savol.variant)
       // console.log(data)
       let all_count = 0
-      for (let dt of data.hudud){
-        all_count = all_count + Number(dt.javob_count)
+      for (let dt of data.savol.variant){
+        all_count = all_count + Number(dt.gols)
       }
       setAllCount(all_count)
     })
@@ -100,12 +100,12 @@ const Reyting = (props) => {
                 />
               </div>
               <Line 
-                percent={AllCount === 0 ? 0 : (100 / AllCount)*item.javob_count} 
+                percent={AllCount === 0 ? 0 : (100 / AllCount)*item.gols} 
                 // percent={num === index ? item.num+1 : item.num} 
                 strokeWidth={2} 
                 strokeColor={colors[index % 20]}
               />
-              <b>{AllCount === 0 ? 0 : (100 / AllCount)*item.javob_count}%</b>
+              <b>{AllCount === 0 ? 0 : (100 / AllCount)*item.gols}%</b>
               {/* <b>{num === index ? item.num+1 : item.num}%</b> */}
             </div>
           </div>

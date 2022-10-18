@@ -59,17 +59,32 @@
 }
 
 .more__btn button {
-  width: 180px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: #FFFFFF;
-  background: #008000;
+  color: #000000;
+  border: 1px solid #008000 !important;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.more__btn button:hover {
+  opacity: 0.9;
+  background: #006d00;
+}
+
+.more__btn .Mui-selected {
+  background: #008000;
+  color: #ffffff;
+}
+
+.more__btn .Mui-selected:hover {
+  opacity: 0.9;
+  background: #008000;
 }
 
 @media (max-width: 1300px) {

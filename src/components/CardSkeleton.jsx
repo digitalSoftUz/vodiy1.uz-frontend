@@ -33,7 +33,11 @@ const CardSkeleton = () => {
       {numbers.map((item, index)=>{
         return(
           <Stack spacing={1} key={index}>
-            <Skeleton animation="wave" variant="rectangular"  height={300} />
+            <Skeleton animation="wave" variant="rounded"  height={270} />
+            <Stack direction="row-reverse" spacing={1}>
+              <Skeleton animation="wave" variant="rounded" height={20} />
+              <Skeleton animation="wave" variant="rounded" width={150} height={20} />
+            </Stack>
             <Skeleton animation="wave" variant="rounded" height={50} />
           </Stack>
         )

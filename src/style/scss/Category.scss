@@ -34,18 +34,31 @@
   justify-content: center;
   height: 60px;
   button{
-    width: 180px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: #FFFFFF;
-    background: #008000;
+    color: #000000;
+    border: 1px solid #008000 !important;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    &:hover{
+      opacity: 0.9;
+      background: #006d00;
+    }
   }
+  .Mui-selected{
+    background: #008000;
+    color: #ffffff;
+    &:hover{
+      opacity: 0.9;
+      background: #008000;
+    }
+  }
+
 }
 
 @media (max-width:1300px) {

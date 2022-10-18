@@ -26,11 +26,11 @@ const Main = (props) => {
           <div className="container">
             <div className="main">
               <div className="main__left">
-                <Link to={`news`} onClick={scrollTop} className='box__title'>{t("LASTNEWS")} <div><span>{t("ALL")}</span> <EastIcon/></div></Link>
+                <Link to={`news`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>{t("LASTNEWS")} <div><span>{t("ALL")}</span> <EastIcon/></div></Link>
                 <CardList data={x.songi15} til={til}/>
               </div>
               <div className="main__right">
-                <Link to={`category/${x.data1?.id}`} onClick={scrollTop} className='box__title'>
+                <Link to={`category/${x.data1?.id}`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>
                   {
                     til === "uz" ? x.data1?.name_uz
                     : til === "ru" ? x.data1?.name_ru
@@ -41,7 +41,7 @@ const Main = (props) => {
                 <div className="b_bot">
                   <Card5 data={x.data1?.xabar} til={til}/>
                 </div>
-                <Link to={`category/${x.data2?.id}`} onClick={scrollTop} className='box__title'>
+                <Link to={`category/${x.data2?.id}`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>
                   {
                     til === "uz" ? x.data2?.name_uz
                     : til === "ru" ? x.data2?.name_ru
@@ -52,7 +52,7 @@ const Main = (props) => {
                 <div className="b_bot">
                   <Card5 data={x.data2?.xabar} til={til}/>
                 </div>
-                <Link to={`category/${x.data3?.id}`} onClick={scrollTop} className='box__title'>
+                <Link to={`category/${x.data3?.id}`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>
                   {
                     til === "uz" ? x.data3?.name_uz
                     : til === "ru" ? x.data3?.name_ru
@@ -68,7 +68,7 @@ const Main = (props) => {
 
             <div className="main">
               <div className="main__left">
-              <Link to={`category/${x.data5?.id}`} onClick={scrollTop} className='box__title'>
+              <Link to={`category/${x.data5?.id}`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>
                   {
                     til === "uz" ? x.data5?.name_uz
                     : til === "ru" ? x.data5?.name_ru
@@ -81,7 +81,7 @@ const Main = (props) => {
                 </div>
               </div>
               <div className="main__right">
-              <Link to={`category/${x.data4?.id}`} onClick={scrollTop} className='box__title'>
+              <Link to={`category/${x.data4?.id}`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>
                   {
                     til === "uz" ? x.data4?.name_uz
                     : til === "ru" ? x.data4?.name_ru
@@ -97,17 +97,17 @@ const Main = (props) => {
 
             <div className="main">
               <div className="main__left b_bot">
-                <Link to={`reyting`} onClick={scrollTop} className='box__title'>{t("REYTING")} <div><span>{t("ALL")}</span> <EastIcon/></div></Link>
+                <Link to={`questions`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>{t("REYTING")} <div><span>{t("ALL")}</span> <EastIcon/></div></Link>
                 <Reyting til={til}/>
               </div>
               <div className="main__right b_bot">
-                <Link to={`photos`} onClick={scrollTop} className='box__title'>{t("F_V")} <div><span>{t("ALL")}</span> <EastIcon/></div></Link>
+                <Link to={`news`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>{t("F_V")} <div><span>{t("ALL")}</span> <EastIcon/></div></Link>
                 <Card6 data={x.songi15.slice(0, 6)} til={til}/>
               </div>
             </div>
             <div className="card__box__container b_bot">
               <div className='card__box__content'>
-                <Link to={`category/${x.data6?.id}`} onClick={scrollTop} className='box__title'>
+                <Link to={`category/${x.data6?.id}`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>
                   {
                     til === "uz" ? x.data6?.name_uz
                     : til === "ru" ? x.data6?.name_ru
@@ -119,7 +119,7 @@ const Main = (props) => {
                 </div>
               </div>
               <div className='card__box__content'>
-                <Link to={`category/${x.data7?.id}`} onClick={scrollTop} className='box__title'>
+                <Link to={`category/${x.data7?.id}`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>
                   {
                     til === "uz" ? x.data7?.name_uz
                     : til === "ru" ? x.data7?.name_ru
@@ -131,7 +131,7 @@ const Main = (props) => {
                 </div>
               </div>
               <div className='card__box__content'>
-                <Link to={`category/${x.data8?.id}`} onClick={scrollTop} className='box__title'>
+                <Link to={`category/${x.data8?.id}`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>
                   {
                     til === "uz" ? x.data8?.name_uz
                     : til === "ru" ? x.data8?.name_ru
@@ -143,7 +143,7 @@ const Main = (props) => {
                 </div>
               </div>
             </div>
-            <Link to={`category/${x.data9?.id}`} onClick={scrollTop} className='box__title'>
+            <Link to={`category/${x.data9?.id}`} onClick={()=>{scrollTop(); x.handleLoad()}} className='box__title'>
               {
                 til === "uz" ? x.data9?.name_uz
                 : til === "ru" ? x.data9?.name_ru

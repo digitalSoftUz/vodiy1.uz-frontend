@@ -34,7 +34,7 @@ const Navbar = (props) => {
                         to={`category/${i.id}`} 
                         key={index}
                         className="nav__item"
-                        onClick={handleBurgerClose}
+                        onClick={()=>{handleBurgerClose(); x.handleLoad()}}
                         // onClick={()=>{setNav_Active(i.id)}}
                       ><span>
                         {
@@ -50,7 +50,7 @@ const Navbar = (props) => {
                   <ListIcon color='success' fontSize='large'/>
                 </Button>
                 <div className='nav__search'>
-                  <input type="search" onChange={(e)=>{setsearchWord(e.target.value)}}/>
+                  <input type="search" onChange={(e)=>{setsearchWord(e.target.value); x.handleLoad()}}/>
                   {searchWord === "" 
                     ? <span><Search /></span>
                     : <Link to={`/search=${searchWord}`}><Search /></Link>

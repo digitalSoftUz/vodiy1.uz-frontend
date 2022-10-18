@@ -2,6 +2,7 @@ import React from 'react';
 import UpNav from "./views/UpNav";
 import Footer from './views/Footer';
 import Navbar from './views/Navbar';
+import News from './pages/News/News';
 import Mode from './context/context';
 import { V1 } from './context/context';
 import Photo from './pages/Photo/Photo';
@@ -61,10 +62,11 @@ class App extends React.Component {
                   <Navbar til={x.til}/>
                   <Routes>
                     <Route path='/' index element={<HomePage/>}/>
-                    <Route path='reyting' element={<Reyting/>}/>
-                    <Route path='photos' element={<Photo/>}/>
+                    <Route path='news' element={<News/>} load={x.load}/>
+                    <Route path='photos' element={<Photo/>} load={x.load}/>
+                    <Route path='questions' element={<Reyting/>} til={x.til} load={x.load}/>
                     <Route path='search=:word' element={<Search til={x.til}/>}/>
-                    <Route path='category/:id' element={<Category til={x.til} vodiybugun9={x.songi5}/>}/>
+                    <Route path='category/:id' element={<Category til={x.til} load={x.load} vodiybugun9={x.songi5}/>}/>
                     <Route path='news/:id' element={<SinglePage til={x.til} songi15={x.songi15}/>}/>
                   </Routes>
                 </div>
