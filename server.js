@@ -1,56 +1,99 @@
 const express = require('express');
-const app = express();
-const port = process.env.PORT || 5000;
 const path = require('path');
-const fs = require('fs')
+const fs = require("fs");
+const app = express();
+const axios = require('axios')
+const PORT = process.env.PORT || 5000;
+const indexPath = path.resolve(__dirname, 'build', 'index.html');
 
-app.get('/', function(request, response) {
-  console.log('Home page visited!');
-  const filePath = path.resolve(__dirname, './build', 'index.html');
-  fs.readFile(filePath, 'utf8', function (err,data) {
+function getPostData(id) {
+  let dt = axios.get(`https://admin.vodiy1.uz/api/findone/${id}`).then(
+    function (res) {
+      return res.data.data
+    }).catch(function (response) {
+      return {}
+    });
+  console.log(dt);
+  return dt;
+}
+// static resources should just be served as they are
+app.use(express.static(
+  path.resolve(__dirname, 'build'),
+  { maxAge: '30d' },
+));
+// here we serve the index.html page
+app.get('/news/:id', (req, res, next) => {
+  fs.readFile(indexPath, 'utf8', (err, htmlData) => {
     if (err) {
-      return console.log(err);
+      console.error('Error during file reading', err);
+      return res.status(404).end()
     }
-    data = data.replace(/\$OG_TITLE/g, 'Home Page');
-    data = data.replace(/\$OG_DESCRIPTION/g, "Home page description");
-    result = data.replace(/\$OG_IMAGE/g, 'https://i.imgur.com/V7irMl8.png');
-    response.send(result);
+
+    axios.get(`https://admin.vodiy1.uz/api/findone/${req.params.id}`).then(
+      function (response) {
+        const post = response.data.data
+        htmlData = htmlData.replace(
+          "<title>Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ</title>",
+          `<title>${post.title_ru}</title>`
+        )
+          .replace('__META_OG_TITLE__N', post.title_ru)
+          .replace('__META_DESCRIPTION__N', post.title_ru)
+          .replace('__META_OG_DESCRIPTION__N', post.title_ru)
+          .replace('__META_OG_IMAGE__N', `https://admin.vodiy1.uz/${post.img}`)
+          .replace('__META_OG_TITLE__I', post.title_ru)
+          .replace('__META_DESCRIPTION__I', post.title_ru)
+          .replace('__META_OG_IMAGE__I', `https://admin.vodiy1.uz/${post.img}`)
+          .replace('__META_OG_TITLE__P', post.title_ru)
+          .replace('__META_OG_DESCRIPTION__P', post.title_ru)
+          .replace('__META_OG_IMAGE__P', `https://admin.vodiy1.uz/${post.img}`)
+          .replace('__META_OG_URL__P', `https://vodiy1.uz/${req.url}`)
+          .replace('__META_OG_TITLE__T', post.title_ru)
+          .replace('__META_OG_DESCRIPTION__T', post.title_ru)
+          .replace('__META_OG_IMAGE__T', `https://admin.vodiy1.uz/${post.img}`)
+          .replace('__META_IMAGE__', `https://admin.vodiy1.uz/${post.img}`)
+        res.send(htmlData);
+      }).catch(function (response) {
+        res.status(404).send("Post not found");
+      });
+
   });
 });
 
-app.get('/news', function(request, response) {
-  console.log('About page visited!');
-  const filePath = path.resolve(__dirname, './build', 'index.html')
-  fs.readFile(filePath, 'utf8', function (err,data) {
+app.get('/*', (req, res, next) => {
+  fs.readFile(indexPath, 'utf8', (err, htmlData) => {
     if (err) {
-      return console.log(err);
+      console.error('Error during file reading', err);
+      return res.status(404).end()
     }
-    data = data.replace(/\$OG_TITLE/g, 'News Page');
-    data = data.replace(/\$OG_DESCRIPTION/g, "News page description");
-    result = data.replace(/\$OG_IMAGE/g, 'https://admin.vodiy1.uz/uploded/1666445025.jpg');
-    response.send(result);
+    htmlData = htmlData.replace('__META_OG_TITLE__', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_OG_DESCRIPTION__', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_DESCRIPTION__', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_OG_IMAGE__', "")
+      .replace('__META_OG_URL__', `https://vodiy1.uz/${req.url}`)
+      .replace('__META_OG_TITLE__N', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_DESCRIPTION__N', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_OG_DESCRIPTION__N', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_OG_IMAGE__N', ``)
+      .replace('__META_OG_TITLE__I', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_DESCRIPTION__I', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_OG_IMAGE__I', ``)
+      .replace('__META_OG_TITLE__P', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_OG_DESCRIPTION__P', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_OG_IMAGE__P', ``)
+      .replace('__META_OG_URL__P', `https://vodiy1.uz/${req.url}`)
+      .replace('__META_OG_TITLE__T', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_OG_DESCRIPTION__T', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
+      .replace('__META_OG_IMAGE__T', ``)
+      .replace('__META_IMAGE__', ``)
+    return res.send(htmlData);
   });
 });
 
-app.get('/contact', function(request, response) {
-  console.log('Contact page visited!');
-  const filePath = path.resolve(__dirname, './build', 'index.html')
-  fs.readFile(filePath, 'utf8', function (err,data) {
-    if (err) {
-      return console.log(err);
-    }
-    data = data.replace(/\$OG_TITLE/g, 'Contact Page');
-    data = data.replace(/\$OG_DESCRIPTION/g, "Contact page description");
-    result = data.replace(/\$OG_IMAGE/g, 'https://i.imgur.com/V7irMl8.png');
-    response.send(result);
-  });
-});
 
-app.use(express.static(path.resolve(__dirname, './build')));
-
-app.get('*', function(request, response) {
-  const filePath = path.resolve(__dirname, './build', 'index.html');
-  response.sendFile(filePath);
-});
-
-app.listen(port, () => console.log(`Listening on port ${port}`));
+// listening...
+app.listen(PORT, (error) => {
+  if (error) {
+    return console.log('Error during app startup', error);
+  }
+  console.log("listening on " + PORT + "...");
+})

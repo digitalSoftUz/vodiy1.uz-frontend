@@ -62,7 +62,7 @@ const Slider2 = (props) => {
         {data?.map((item, index)=>{
           return(
             <SwiperSlide key={index}>
-              <Link to={`/news/${item.id}`} onClick={scrollTop}>
+              <a href={`/news/${item.id}`} onClick={scrollTop}>
                 <div className="slider__img">
                   <img src={BaseUrl+item.img} alt="" />
                 </div>
@@ -73,7 +73,7 @@ const Slider2 = (props) => {
                     : item.title_en
                   } 
                 </p>
-              </Link>
+              </a>
             </SwiperSlide>
           )
         }) }

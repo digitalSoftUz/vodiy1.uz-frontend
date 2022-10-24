@@ -8,22 +8,23 @@ export const V1 = createContext();
 class Mode extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       til: i18next.language,
       load: false,
-      menyu:[],
-      oxrgi:[],
-      songi5:[],
-      songi15:[],
-      data1:[],
-      data2:[],
-      data3:[],
-      data4:[],
-      data5:[],
-      data6:[],
-      data7:[],
-      data8:[],
-      data9:[],
+      menyu: [],
+      oxrgi: [],
+      songi5: [],
+      songi15: [],
+      data1: [],
+      data2: [],
+      data3: [],
+      data4: [],
+      data5: [],
+      data6: [],
+      data7: [],
+      data8: [],
+      data9: [],
+      data10: [],
     }
   }
   handleLoad = () => {
@@ -36,22 +37,22 @@ class Mode extends Component {
       })
     }, 700);
   }
-  handleRu = () =>{
-    this.setState({til:"ru"})
+  handleRu = () => {
+    this.setState({ til: "ru" })
     return i18next.changeLanguage("ru")
   }
-  handleUz = () =>{
-    this.setState({til:"uz"})
-    return  i18next.changeLanguage("uz")
+  handleUz = () => {
+    this.setState({ til: "uz" })
+    return i18next.changeLanguage("uz")
   }
-  handleEn = () =>{
-    this.setState({til:"en"})
-    return  i18next.changeLanguage("en")
+  handleEn = () => {
+    this.setState({ til: "en" })
+    return i18next.changeLanguage("en")
   }
   componentDidMount() {
-    axios.get(`${BaseUrl}api/test`).then((res)=>{
+    axios.get(`${BaseUrl}api/test`).then((res) => {
       const data = res?.data
-      // console.log(data)
+      console.log(data)
       this.setState({
         // data:data,
         oxrgi: data?.oxrgi[0],
@@ -68,19 +69,20 @@ class Mode extends Component {
         data7: data?.xabarlar[6],
         data8: data?.xabarlar[7],
         data9: data?.xabarlar[8],
+        data10: data?.xabarlar[9],
       })
     })
   }
-  render() { 
+  render() {
     // console.log(this.state.songi5)
     return (
       <V1.Provider
         value={{
           ...this.state,
-          handleRu:this.handleRu,
-          handleUz:this.handleUz,
-          handleEn:this.handleEn,
-          handleLoad:this.handleLoad,
+          handleRu: this.handleRu,
+          handleUz: this.handleUz,
+          handleEn: this.handleEn,
+          handleLoad: this.handleLoad,
         }}
       >
         {this.props.children}
@@ -88,5 +90,5 @@ class Mode extends Component {
     );
   }
 }
- 
+
 export default Mode;

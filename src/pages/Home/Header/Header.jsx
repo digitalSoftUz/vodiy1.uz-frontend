@@ -6,28 +6,28 @@ import { V1 } from '../../../context/context';
 // import header from "../../../assets/Images/Header.png";
 
 const Header = () => {
-  const scrollTop = () =>{
-    window.scrollTo(0 ,0)
+  const scrollTop = () => {
+    window.scrollTo(0, 0)
   }
-  return ( 
+  return (
     <V1.Consumer>
-      {(x)=>{
-        return(
+      {(x) => {
+        return (
           <header className='header'>
-            <Link to={`news/${x.oxrgi.id}`} 
+            <a href={`news/${x.oxrgi.id}`}
               className="header__left"
               onClick={scrollTop}
               style={{
-                "--bg" : x.oxrgi.length === 0 ? "" : `url(${BaseUrl+x.oxrgi?.img})`
+                "--bg": x.oxrgi.length === 0 ? "" : `url(${BaseUrl + x.oxrgi?.img})`
               }}
             >
               <div>
                 <h1>
                   {
                     x.til === "uz" ? x.oxrgi.title_uz
-                    : x.til === "ru" ? x.oxrgi.title_ru
-                    : x.oxrgi.title_en
-                  }  
+                      : x.til === "ru" ? x.oxrgi.title_ru
+                        : x.oxrgi.title_en
+                  }
                 </h1>
                 {/* <p>
                   {
@@ -37,24 +37,24 @@ const Header = () => {
                   }  
                 </p> */}
               </div>
-              
-            </Link>
+
+            </a>
             <div className="header__right">
-              {x.songi5?.map((item, index)=>{
-                return(
+              {x.songi5?.map((item, index) => {
+                return (
                   <div className='header__item' key={index}>
                     <div className='header__info'>
-                      <span><Views/>{item.order}</span>
-                      <span><Calendar/>{item.sana}</span>
+                      <span><Views />{item.order}</span>
+                      <span><Calendar />{item.sana}</span>
                     </div>
-                    
-                    <Link to={`news/${item.id}`}>
+
+                    <a href={`news/${item.id}`}>
                       {
                         x.til === "uz" ? item.title_uz
-                        : x.til === "ru" ? item.title_ru
-                        : item.title_en
-                      }  
-                    </Link>
+                          : x.til === "ru" ? item.title_ru
+                            : item.title_en
+                      }
+                    </a>
                   </div>
                 )
               })}
@@ -62,9 +62,9 @@ const Header = () => {
           </header>
         )
       }}
-      
+
     </V1.Consumer>
-   );
+  );
 }
- 
+
 export default Header;

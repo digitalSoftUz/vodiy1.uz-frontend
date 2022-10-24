@@ -42,7 +42,7 @@ const Search = () => {
               ? <CardSkeleton/> 
               : data?.map((item, index)=>{
                 return(
-                  <Link to={`/news/${item.id}`} onClick={scrollTop} className="card__item" key={index}>
+                  <a href={`/news/${item.id}`} onClick={scrollTop} className="card__item" key={index}>
                     <div className='card__img'>
                       <img src={BaseUrl+item.img} alt="" />
                     </div>
@@ -57,7 +57,7 @@ const Search = () => {
                         : item.title_en
                       } 
                     </p>
-                  </Link>
+                  </a>
                 )
               })}
             </div>

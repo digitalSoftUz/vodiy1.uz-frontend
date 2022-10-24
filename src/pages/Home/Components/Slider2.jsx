@@ -10,8 +10,8 @@ import "swiper/css/pagination";
 const Slider = (props) => {
   var til = props.til
   var data = props.data
-  const scrollTop = () =>{
-    window.scrollTo(0 ,0)
+  const scrollTop = () => {
+    window.scrollTo(0, 0)
   }
   return (
     <React.Fragment>
@@ -55,24 +55,24 @@ const Slider = (props) => {
         modules={[Pagination]}
         className="mySwiper__box"
       >
-        {data?.map((item, index)=>{
-          return(
+        {data?.map((item, index) => {
+          return (
             <SwiperSlide key={index}>
-              <Link to={`/news/${item.id}`} onClick={scrollTop}>
+              <a href={`/news/${item.id}`} onClick={scrollTop}>
                 <div className="slider__img">
-                  <img src={BaseUrl+item.img} alt="" />
+                  <img src={BaseUrl + item.img} alt="" />
                 </div>
                 <p>
-                  { 
+                  {
                     til === "uz" ? item.title_uz
-                    : til === "ru" ? item.title_ru
-                    : item.title_en
-                  } 
+                      : til === "ru" ? item.title_ru
+                        : item.title_en
+                  }
                 </p>
-              </Link>
+              </a>
             </SwiperSlide>
           )
-        }) }
+        })}
         {/* <SwiperSlide>1111</SwiperSlide>
         <SwiperSlide>1111</SwiperSlide>
         <SwiperSlide>1111</SwiperSlide>

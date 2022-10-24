@@ -96,7 +96,7 @@ const Category = (props) => {
                 : 
                 data?.map((item, index)=>{
                   return(
-                    <Link to={`/news/${item.id}`} onClick={scrollTop} className="card__item" key={index}>
+                    <a href={`/news/${item.id}`} onClick={scrollTop} className="card__item" key={index}>
                       <div className='card__img'>
                         <img src={BaseUrl+item.img} alt="" />
                       </div>
@@ -111,7 +111,7 @@ const Category = (props) => {
                           : item.title_en
                         } 
                       </p>
-                    </Link>
+                    </a>
                   )
                 })
                 }
@@ -134,7 +134,7 @@ const Category = (props) => {
               {
                 data1?.map((item, index)=>{
                   return(
-                    <Link to={`/news/${item.id}`} className="single__item b_bot" key={index}>
+                    <a href={`/news/${item.id}`} className="single__item b_bot" key={index}>
                       <div className='news__info'>
                         <span><Views/>{item.order}</span>
                         <span><Calendar/>{item.sana}</span>
@@ -146,7 +146,7 @@ const Category = (props) => {
                           : item.title_en
                         }
                       </p>
-                    </Link>
+                    </a>
                   )
                 })}
             </div>
