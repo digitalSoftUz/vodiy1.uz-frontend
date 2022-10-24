@@ -59,15 +59,15 @@ class App extends React.Component {
                 {this.state.load ? <Loading/> : ""}
                 <div>
                   <UpNav/>
-                  <Navbar til={x.til}/>
+                  <Navbar/>
                   <Routes>
                     <Route path='/' index element={<HomePage/>}/>
                     <Route path='news' element={<News/>} load={x.load}/>
                     <Route path='photos' element={<Photo/>} load={x.load}/>
-                    <Route path='questions' element={<Reyting/>} til={x.til} load={x.load}/>
-                    <Route path='search=:word' element={<Search til={x.til}/>}/>
-                    <Route path='category/:id' element={<Category til={x.til} load={x.load} vodiybugun9={x.songi5}/>}/>
-                    <Route path='news/:id' element={<SinglePage til={x.til} songi15={x.songi15}/>}/>
+                    <Route path='questions' element={<Reyting/>} load={x.load}/>
+                    <Route path='search=:word' element={<Search />}/>
+                    <Route path='category/:id' element={<Category load={x.load}/>}/>
+                    <Route path='news/:id' element={<SinglePage til={x.til}/>}/>
                   </Routes>
                 </div>
                 <Footer menyu={x.menyu} til={x.til}/>

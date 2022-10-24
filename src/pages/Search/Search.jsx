@@ -6,10 +6,9 @@ import { Calendar, Views } from '../../assets/icons';
 import { Link, useParams } from 'react-router-dom';
 import CardSkeleton from '../../components/CardSkeleton';
 
-const Search = (props) => {
-  var til = props.til
+const Search = () => {
   const {word} = useParams()
-  console.log(word)
+  // console.log(word)
   const [load, setLoad] = useState(true);
   const scrollTop = () =>{
     window.scrollTo(0 ,0)
@@ -53,8 +52,8 @@ const Search = (props) => {
                     </div>
                     <p>
                       { 
-                        til === "uz" ? item.title_uz
-                        : til === "ru" ? item.title_ru
+                        x.til === "uz" ? item.title_uz
+                        : x.til === "ru" ? item.title_ru
                         : item.title_en
                       } 
                     </p>

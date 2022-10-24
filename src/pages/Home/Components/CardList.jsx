@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Link } from "react-router-dom";
-// import { BaseUrl } from '../../../contans';
+import { BaseUrl } from '../../../contans';
 import { Calendar, Views } from '../../../assets/icons';
 
 const CardList = (props) => {
@@ -9,6 +10,18 @@ const CardList = (props) => {
   const scrollTop = () =>{
     window.scrollTo(0 ,0)
   }
+  const [data1, setData1] = useState([]);
+  const getData1 = () => {
+    axios.get(`${BaseUrl}api/all?page=1`).then(
+      (res)=>{
+        const data = res.data.data
+        setData1(data)
+      }
+    )
+  }
+  useEffect(()=>{
+    getData1()
+  },[])
   return ( 
     <React.Fragment>
       <div className="card__list b_bot">

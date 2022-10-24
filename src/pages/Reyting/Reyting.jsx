@@ -90,7 +90,7 @@ const Reyting = () => {
                                   strokeWidth={3} 
                                   strokeColor={colors[index % 20]}
                                 />
-                                  <b>{all_count === 0 ? 0 : (100 / all_count)*v.gols}%</b>
+                                  <b>{all_count === 0 ? 0 : ((100 / all_count)*v.gols).toFixed(2)}%</b>
                               </div>
                             </Tooltip>
                           </div>

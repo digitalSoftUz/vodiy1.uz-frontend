@@ -7,11 +7,11 @@ import Banner from './Banner';
 
 const UpNav = () => {
   // const [valyuta, setValyuta] = useState();
-  const [weather, setWeather] = useState();
-  const result = weather?.toString().split('.', 1)
-  const [city, setCity] = useState();
-  var date = new Date().toLocaleDateString('en-US')
-  var now = dateFormat(date, "yyyy-mm-dd")
+  // const [weather, setWeather] = useState();
+  // const result = weather?.toString().split('.', 1)
+  // const [city, setCity] = useState();
+  // var date = new Date().toLocaleDateString('en-US')
+  // var now = dateFormat(date, "yyyy-mm-dd")
   useEffect(()=>{
     // const getValyuta = () =>{
     //   axios.get(`https://cbu.uz/oz/arkhiv-kursov-valyut/json/USD/${now}/`,{
@@ -25,19 +25,19 @@ const UpNav = () => {
     // }
     // getValyuta()
 
-    const getWeather = () =>{
-      var lat = (40.82)
-      var lon = (72.28)
-      var api = "26cef269b671e50cb02f7035722833fd"
-      var url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${api}`
-      axios.get(url)
-        .then((res)=>{
-          // console.log(res.data)
-          setCity(res.data.name)
-          setWeather(res.data.main.temp)
-      })
-    }
-    getWeather()
+    // const getWeather = () =>{
+    //   var lat = (40.82)
+    //   var lon = (72.28)
+    //   var api = "26cef269b671e50cb02f7035722833fd"
+    //   var url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${api}`
+    //   axios.get(url)
+    //     .then((res)=>{
+    //       // console.log(res.data)
+    //       setCity(res.data.name)
+    //       setWeather(res.data.main.temp)
+    //   })
+    // }
+    // getWeather()
 
   },[])
   return ( 
@@ -56,7 +56,7 @@ const UpNav = () => {
                 <div>
                   <button className={x.til === "ru"? "til__active" :""} onClick={x.handleRu}>Ўз</button>
                   <button className={x.til === "uz"? "til__active" :""} onClick={x.handleUz}>O‘z</button>
-                  <button className={x.til === "en"? "til__active" :""} onClick={x.handleEn}>En</button>
+                  {/* <button className={x.til === "en"? "til__active" :""} onClick={x.handleEn}>En</button> */}
                 </div>
                 {/* <div className='up__nav__stat'>
                   <div>

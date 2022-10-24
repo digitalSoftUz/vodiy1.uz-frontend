@@ -5,8 +5,7 @@ import { BaseUrl } from '../../../contans';
 import { V1 } from '../../../context/context';
 // import header from "../../../assets/Images/Header.png";
 
-const Header = (props) => {
-  var til = props.til 
+const Header = () => {
   const scrollTop = () =>{
     window.scrollTo(0 ,0)
   }
@@ -22,20 +21,23 @@ const Header = (props) => {
                 "--bg" : x.oxrgi.length === 0 ? "" : `url(${BaseUrl+x.oxrgi?.img})`
               }}
             >
-              <h1>
-                {
-                  til === "uz" ? x.oxrgi.title_uz
-                  : til === "ru" ? x.oxrgi.title_ru
-                  : x.oxrgi.title_en
-                }  
-              </h1>
-              <p>
-                {
-                  til === "uz" ? x.oxrgi.description_uz
-                  : til === "ru" ? x.oxrgi.description_ru
-                  : x.oxrgi.title_en
-                }  
-              </p>
+              <div>
+                <h1>
+                  {
+                    x.til === "uz" ? x.oxrgi.title_uz
+                    : x.til === "ru" ? x.oxrgi.title_ru
+                    : x.oxrgi.title_en
+                  }  
+                </h1>
+                {/* <p>
+                  {
+                    x.til === "uz" ? x.oxrgi.description_uz
+                    : x.til === "ru" ? x.oxrgi.description_ru
+                    : x.oxrgi.title_en
+                  }  
+                </p> */}
+              </div>
+              
             </Link>
             <div className="header__right">
               {x.songi5?.map((item, index)=>{
@@ -48,8 +50,8 @@ const Header = (props) => {
                     
                     <Link to={`news/${item.id}`}>
                       {
-                        til === "uz" ? item.title_uz
-                        : til === "ru" ? item.title_ru
+                        x.til === "uz" ? item.title_uz
+                        : x.til === "ru" ? item.title_ru
                         : item.title_en
                       }  
                     </Link>

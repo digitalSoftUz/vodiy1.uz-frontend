@@ -57,6 +57,7 @@ class Mode extends Component {
         oxrgi: data?.oxrgi[0],
         menyu: data?.menyu,
         songi5: data?.songi5,
+        songi15: data?.songi15,
         // 
         data1: data?.xabarlar[0],
         data2: data?.xabarlar[1],

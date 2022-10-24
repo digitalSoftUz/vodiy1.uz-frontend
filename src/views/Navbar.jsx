@@ -4,19 +4,34 @@ import { Search } from '../assets/icons';
 import ListIcon from '@mui/icons-material/List';
 import CloseIcon from '@mui/icons-material/Close';
 import { V1 } from '../context/context';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
-const Navbar = (props) => {
-  var til = props.til 
+const Navbar = () => {
+  let navigate = useNavigate()
   // const [nav_active, setNav_Active] = useState(0)
   const [burger, setburger] = useState(true);
-  const [searchWord, setsearchWord] = useState("");
+  const [word, setWord] = useState("");
+  // const [searchWord, setsearchWord] = useState("");
   const handleBurger = () =>{
     setburger(!burger)
   }
   const handleBurgerClose = () =>{
     setburger(true)
   }
+  
+  const handleKey = (e) => {
+    if (e.key === "Enter") {
+      setTimeout(() => {
+        navigate(`/search=${word}`)
+      }, 100);
+    }
+    if (e.key === "NumpadEnter") {
+      setTimeout(() => {
+        navigate(`/search=${word}`)
+      }, 100);
+    }
+  }
+  
   return ( 
     <V1.Consumer>
       {(x)=>{
@@ -38,8 +53,8 @@ const Navbar = (props) => {
                         // onClick={()=>{setNav_Active(i.id)}}
                       ><span>
                         {
-                          til === "uz" ? i.name_uz
-                          : til === "ru" ? i.name_ru
+                          x.til === "uz" ? i.name_uz
+                          : x.til === "ru" ? i.name_ru
                           : i.name_en
                         }
                       </span></NavLink>
@@ -50,10 +65,10 @@ const Navbar = (props) => {
                   <ListIcon color='success' fontSize='large'/>
                 </Button>
                 <div className='nav__search'>
-                  <input type="search" onChange={(e)=>{setsearchWord(e.target.value); x.handleLoad()}}/>
-                  {searchWord === "" 
+                  <input type="search" onKeyDown={handleKey} onChange={(e)=>{setWord(e.target.value); x.handleLoad()}}/>
+                  {word === "" 
                     ? <span><Search /></span>
-                    : <Link to={`/search=${searchWord}`}><Search /></Link>
+                    : <Link to={`/search=${word}`}><Search /></Link>
                   }
                 </div>
               </div>

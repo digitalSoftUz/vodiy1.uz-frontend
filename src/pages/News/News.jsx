@@ -8,7 +8,6 @@ import CardSkeleton from '../../components/CardSkeleton';
 import Pagination from '@mui/material/Pagination';
 
 const News = (props) => {
-  var til = props.til
   var load1 = props.load
   const [load, setLoad] = useState(false);
   const scrollTop = () =>{
@@ -67,8 +66,8 @@ const News = (props) => {
                     </div>
                     <p>
                       { 
-                        til === "uz" ? item.title_uz
-                        : til === "ru" ? item.title_ru
+                        x.til === "uz" ? item.title_uz
+                        : x.til === "ru" ? item.title_ru
                         : item.title_en
                       } 
                     </p>

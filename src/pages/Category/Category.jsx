@@ -9,9 +9,7 @@ import Pagination from '@mui/material/Pagination';
 import { V1 } from '../../context/context';
 
 const Category = (props) => {
-  var til = props.til
   var load1 = props.load
-  var vodiybugun9 = props.vodiybugun9
   
   // var num = 1
   // localStorage.setItem("pages", JSON.stringify(num))
@@ -20,6 +18,7 @@ const Category = (props) => {
 
   const id = useParams().id
   const [data, setdata] = useState([]);
+  const [data1, setData1] = useState([]);
   const [load, setLoad] = useState(false);
   const scrollTop = () =>{
     window.scrollTo(0 ,0)
@@ -33,6 +32,14 @@ const Category = (props) => {
       scrollTop()
     }, 400);
   };
+  const getData1 = () => {
+    axios.get(`${BaseUrl}api/all?page=1`).then(
+      (res)=>{
+        const data = res.data.data
+        setData1(data)
+      }
+    )
+  }
   // console.log(all)
   async function GetNews() {
     setLoad(true)
@@ -59,6 +66,7 @@ const Category = (props) => {
   }
   useEffect(()=>{
     GetNews()
+    getData1()
     if (load1) {
       setPage(1)
     }
@@ -98,8 +106,8 @@ const Category = (props) => {
                       </div>
                       <p>
                         { 
-                          til === "uz" ? item.title_uz
-                          : til === "ru" ? item.title_ru
+                          x.til === "uz" ? item.title_uz
+                          : x.til === "ru" ? item.title_ru
                           : item.title_en
                         } 
                       </p>
@@ -124,7 +132,7 @@ const Category = (props) => {
             
             <div className="category__news single__news">
               {
-                vodiybugun9?.map((item, index)=>{
+                data1?.map((item, index)=>{
                   return(
                     <Link to={`/news/${item.id}`} className="single__item b_bot" key={index}>
                       <div className='news__info'>
@@ -133,8 +141,8 @@ const Category = (props) => {
                       </div>
                       <p>
                         { 
-                          til === "uz" ? item.title_uz
-                          : til === "ru" ? item.title_ru
+                          x.til === "uz" ? item.title_uz
+                          : x.til === "ru" ? item.title_ru
                           : item.title_en
                         }
                       </p>

@@ -189,7 +189,7 @@ export const Play = () =>(
   </svg>
 )
 export const Circle = (props) =>(
-  <svg width="45" height="45" viewBox="0 0 45 45" fill="none">
+  <svg width="45" height="45" viewBox="0 0 45 45" fill="none" className="reyt__circle">
     <circle cx="22.5" cy="22.5" r="21.5" stroke={props.color} strokeWidth="2"/>
     <circle cx="22.5" cy="22.5" r={props.pick} fill={props.color2}/>
   </svg>

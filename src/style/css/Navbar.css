@@ -221,6 +221,7 @@
   height: 35px;
   border: none;
   outline: none;
+  caret-color: #008000;
 }
 
 .nav__search a, .nav__search span {

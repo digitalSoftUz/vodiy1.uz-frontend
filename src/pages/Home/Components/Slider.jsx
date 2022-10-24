@@ -40,7 +40,7 @@ const Slider2 = (props) => {
             spaceBetween: 15,
           },
           975: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 15,
           },
           1024: {
@@ -48,11 +48,11 @@ const Slider2 = (props) => {
             spaceBetween: 20,
           },
           1441: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 20,
           },
           1920: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 20,
           },
         }}

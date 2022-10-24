@@ -5,10 +5,10 @@ import { initReactI18next } from "react-i18next";
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
-  // .use(LanguageDetector)
+  .use(LanguageDetector)
   .use(HttpApi)
   .init({
-    supportedLngs: ['ru', 'uz', 'en' ],
+    supportedLngs: ['ru', 'uz' ],
     fallbackLng: "ru",
     detection: {
       order: ['cookie', 'localStorage', 'htmlTag', 'path', 'subdomain'],

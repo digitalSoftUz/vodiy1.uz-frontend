@@ -9,6 +9,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import "./App.css"
 import "./utils/i18next";
 import "./style/css/_import.css"
+import {  HelmetProvider } from 'react-helmet-async';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +17,9 @@ root.render(
     <Router>
       <Suspense fallback={FallbackLoading}>
         <StyledEngineProvider injectFirst>
+    <HelmetProvider>
           <App />
+    </HelmetProvider>
         </StyledEngineProvider>
       </Suspense>
     </Router>

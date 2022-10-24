@@ -16,8 +16,8 @@ const HomePage = () => {
       {(x)=>{
         return(
           <React.Fragment>
-            <Header til={x.til}/>
-            <Main   til={x.til} data={x.data}/>
+            <Header />
+            <Main />
           </React.Fragment>
         )
       }}

@@ -8,6 +8,7 @@ import { BaseUrl } from "../../../contans"
 import { useTranslation } from "react-i18next";
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+import Tooltip from '@mui/material/Tooltip';
 
 const colors = scaleOrdinal(schemeCategory10).range();
 
@@ -105,7 +106,9 @@ const Reyting = (props) => {
                 strokeWidth={2} 
                 strokeColor={colors[index % 20]}
               />
-              <b>{AllCount === 0 ? 0 : (100 / AllCount)*item.gols}%</b>
+              <Tooltip title={`${item.gols + " " + t("OVOZ")}`} placement="top-end">
+                <b>{AllCount === 0 ? 0 : ((100 / AllCount)*item.gols).toFixed(2)}%</b>
+              </Tooltip>
               {/* <b>{num === index ? item.num+1 : item.num}%</b> */}
             </div>
           </div>

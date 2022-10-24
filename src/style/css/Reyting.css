@@ -29,7 +29,7 @@
 .reyting__box p {
   font-style: normal;
   font-weight: 500;
-  font-size: 26px;
+  font-size: 22px;
   line-height: 32px;
   color: #000000;
   margin-bottom: 10px;
@@ -38,10 +38,10 @@
 .reyting__box b {
   font-style: normal;
   font-weight: 600;
-  font-size: 26px;
+  font-size: 23px;
   line-height: 32px;
   color: #000000;
-  width: 70px;
+  width: 90px;
 }
 
 .reyting__box2 {
@@ -69,18 +69,18 @@
   font-size: 20px;
   line-height: 32px;
   color: #000000;
-  width: 70px;
+  width: 90px;
   text-align: right;
 }
 
-.reyting__box2 svg {
+.reyting__box2 .rc-progress-line {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  width: 260px;
+  width: 230px;
 }
 
-.reyting__box2 svg path {
+.reyting__box2 .rc-progress-line path {
   stroke-width: 3px;
 }
 
@@ -99,6 +99,15 @@
 
 .reyting__progress .radio {
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .reyting__progress .radio circle {
@@ -163,6 +172,12 @@
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
   }
+  .reyting__progress {
+    grid-gap: 20px;
+  }
+  .reyting__progress .reyt__circle {
+    width: 40px;
+  }
 }
 
 @media (max-width: 425px) {
@@ -183,5 +198,11 @@
   }
   .reyting__box b {
     font-size: 20px;
+  }
+  .reyting__progress {
+    grid-gap: 10px;
+  }
+  .reyting__progress .reyt__circle {
+    width: 25px;
   }
 }

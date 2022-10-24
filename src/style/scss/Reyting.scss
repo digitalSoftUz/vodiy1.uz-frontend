@@ -24,7 +24,7 @@
   p{
     font-style: normal;
     font-weight: 500;
-    font-size: 26px;
+    font-size: 22px;
     line-height: 32px;
     color: #000000;
     margin-bottom: 10px;
@@ -32,10 +32,10 @@
   b{
     font-style: normal;
     font-weight: 600;
-    font-size: 26px;
+    font-size: 23px;
     line-height: 32px;
     color: #000000;
-    width: 70px;
+    width: 90px;
   }
 }
 .reyting__box2{
@@ -54,12 +54,12 @@
     font-size: 20px;
     line-height: 32px;
     color: #000000;
-    width: 70px;
+    width: 90px;
     text-align: right;
   }
-  svg{
+  .rc-progress-line{
     flex-grow: 1;
-    width: 260px;
+    width: 230px;
     path{
       stroke-width: 3px;
     }
@@ -72,6 +72,9 @@
   grid-gap: 30px;
   .radio{
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     circle{
       transition: 0.2s linear;
     }
@@ -123,6 +126,12 @@
   .reytings{
     grid-template-columns: repeat(1, 1fr);
   }
+  .reyting__progress{
+    grid-gap: 20px;
+    .reyt__circle{
+      width: 40px;
+    }
+  }
 }
 @media (max-width:425px) {
   .reyt__title{
@@ -143,6 +152,12 @@
     }
     b{
       font-size: 20px;
+    }
+  }
+  .reyting__progress{
+    grid-gap: 10px;
+    .reyt__circle{
+      width: 25px;
     }
   }
 }
