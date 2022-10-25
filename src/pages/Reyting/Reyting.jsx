@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Line } from 'rc-progress';
 import { scaleOrdinal } from "d3-scale";
 import { schemeCategory10 } from "d3-scale-chromatic";
-import { useTranslation } from 'react-i18next';
 import { BaseUrl } from '../../contans';
 import Pagination from '@mui/material/Pagination';
 import { V1 } from '../../context/context';
@@ -13,7 +12,6 @@ import ReytingSkeleton from '../../components/ReytingSkeleton';
 const colors = scaleOrdinal(schemeCategory10).range();
 
 const Reyting = () => {
-  const { t } = useTranslation()
   const [load, setLoad] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = React.useState(1);
@@ -51,9 +49,11 @@ const Reyting = () => {
   return (
     <V1.Consumer>
       {(x)=>{
+        var REYTINGS = x.til === "uz"? "So‘rovnomalar" : "Сўровномалар"
+        var OVOZ = x.til === "uz"? "Ovoz" : "Овоз"
         return(
           <div className="container">
-            <h1 className='box__title'>{t("REYTINGS")}</h1>
+            <h1 className='box__title'>{REYTINGS}</h1>
             <div className="reytings">
               {load
               ? <ReytingSkeleton/> 
@@ -82,7 +82,7 @@ const Reyting = () => {
                                 : v.name_en
                               }
                             </p>
-                            <Tooltip title={`${v.gols + " " + t("OVOZ")}`} placement="top-end">
+                            <Tooltip title={`${v.gols + " " + OVOZ}`} placement="top-end">
                               <div className='reyting__box2'>
                                 <Line 
                                   percent={all_count === 0 ? 0 : (100 / all_count)*v.gols} 

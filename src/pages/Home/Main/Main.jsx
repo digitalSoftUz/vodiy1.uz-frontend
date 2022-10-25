@@ -8,12 +8,10 @@ import Slider2 from '../Components/Slider2';
 import Reyting from "../Components/Reyting";
 import CardList from '../Components/CardList';
 import { V1 } from '../../../context/context';
-import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom"
 import EastIcon from '@mui/icons-material/East';
 
 const Main = () => {
-  const { t } = useTranslation()
   const scrollTop = () => {
     window.scrollTo(0, 0)
   }
@@ -21,11 +19,14 @@ const Main = () => {
     <V1.Consumer>
       {(x) => {
         // console.log(x.songi15)
+        var LASTNEWS = x.til === "uz"? "So‘nggi yangiliklar" : "Сўнгги янгиликлар"
+        var ALL = x.til === "uz"? "Barchasi" : "Барчаси"
+        var REYTING = x.til === "uz"? "So‘rovnoma" : "Сўровнома"
         return (
           <div className="container">
             <div className="main">
               <div className="main__left">
-                <Link to={`news`} onClick={() => { scrollTop(); x.handleLoad() }} className='box__title'>{t("LASTNEWS")} <div><span>{t("ALL")}</span> <EastIcon /></div></Link>
+                <Link to={`news`} onClick={() => { scrollTop(); x.handleLoad() }} className='box__title'>{LASTNEWS} <div><span>{ALL}</span> <EastIcon /></div></Link>
                 <CardList data={x.songi15} til={x.til} />
               </div>
               <div className="main__right">
@@ -35,7 +36,7 @@ const Main = () => {
                       : x.til === "ru" ? x.data1?.name_ru
                         : x.data1?.name_en
                   }
-                  <div><span>{t("ALL")}</span> <EastIcon /></div>
+                  <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
                 <div className="b_bot">
                   <Card5 data={x.data1?.xabar} til={x.til} />
@@ -46,7 +47,7 @@ const Main = () => {
                       : x.til === "ru" ? x.data2?.name_ru
                         : x.data2?.name_en
                   }
-                  <div><span>{t("ALL")}</span> <EastIcon /></div>
+                  <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
                 <div className="b_bot">
                   <Card5 data={x.data2?.xabar} til={x.til} />
@@ -57,7 +58,7 @@ const Main = () => {
                       : x.til === "ru" ? x.data3?.name_ru
                         : x.data3?.name_en
                   }
-                  <div><span>{t("ALL")}</span> <EastIcon /></div>
+                  <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
                 <div className="b_bot">
                   <Card5 data={x.data3?.xabar} til={x.til} />
@@ -73,7 +74,7 @@ const Main = () => {
                       : x.til === "ru" ? x.data5?.name_ru
                         : x.data5?.name_en
                   }
-                  <div><span>{t("ALL")}</span> <EastIcon /></div>
+                  <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
                 <div className="b_bot">
                   <Card5 data={x.data5?.xabar} til={x.til} />
@@ -86,7 +87,7 @@ const Main = () => {
                       : x.til === "ru" ? x.data4?.name_ru
                         : x.data4?.name_en
                   }
-                  <div><span>{t("ALL")}</span> <EastIcon /></div>
+                  <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
                 <div className="b_bot">
                   <Card5 data={x.data4?.xabar} til={x.til} />
@@ -96,7 +97,7 @@ const Main = () => {
 
             <div className="main">
               <div className="main__left b_bot">
-                <Link to={`questions`} onClick={() => { scrollTop(); x.handleLoad() }} className='box__title'>{t("REYTING")} <div><span>{t("ALL")}</span> <EastIcon /></div></Link>
+                <Link to={`questions`} onClick={() => { scrollTop(); x.handleLoad() }} className='box__title'>{REYTING} <div><span>{ALL}</span> <EastIcon /></div></Link>
                 <Reyting til={x.til} />
               </div>
               <div className="main__right b_bot">
@@ -106,7 +107,7 @@ const Main = () => {
                       : x.til === "ru" ? x.data10?.name_ru
                         : x.data10?.name_en
                   }
-                  <div><span>{t("ALL")}</span> <EastIcon /></div>
+                  <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
                 <Card6 data={x.data10?.xabar} til={x.til} />
               </div>

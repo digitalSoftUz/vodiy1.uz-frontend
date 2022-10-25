@@ -6,7 +6,6 @@ import { Calendar, Views } from '../../assets/icons';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { useTranslation } from "react-i18next";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -16,10 +15,10 @@ import {
   TelegramIcon,
 } from "react-share";
 import ShareIcon from '@mui/icons-material/Share';
+import { V1 } from '../../context/context';
 
 const SinglePage = (props) => {
   var til = props.til
-  const { t } = useTranslation()
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [item, setitem] = useState([]);
@@ -106,90 +105,95 @@ const SinglePage = (props) => {
   )
 
   return (
-    <React.Fragment>
-      <div className="container">
-        <div className="singlepage">
-          <div className='single__news single__left'>
-            {data1?.map((item, index) => {
-              return (
-                <a href={`${item.id}`} onClick={scrollTop} className="single__item b_bot" key={index}>
-                  <div className='news__info'>
-                    <span><Views />{item.order}</span>
-                    <span><Calendar />{item.sana}</span>
+    <V1.Consumer>
+      {(x)=>{
+        var SHARE = x.til === "uz"? "Ulashish" : "Улашиш"
+        return(
+          <div className="container">
+            <div className="singlepage">
+              <div className='single__news single__left'>
+                {data1?.map((item, index) => {
+                  return (
+                    <a href={`${item.id}`} onClick={scrollTop} className="single__item b_bot" key={index}>
+                      <div className='news__info'>
+                        <span><Views />{item.order}</span>
+                        <span><Calendar />{item.sana}</span>
+                      </div>
+                      <p>
+                        {
+                          til === "uz" ? item.title_uz
+                            : til === "ru" ? item.title_ru
+                              : item.title_en
+                        }
+                      </p>
+                    </a>
+                  )
+                })}
+              </div>
+              <div className='single__center'>
+                <div className="center__item">
+                  <div className='center__top'>
+                    <div className='center__info'>
+                      <span><Views />{item.order}</span>
+                      <span><Calendar />{item.sana}</span>
+                    </div>
+                    <Button
+                      id="basic-button"
+                      aria-controls={open ? 'basic-menu' : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}
+                    >
+                      {SHARE} <ShareIcon fontSize='small' />
+                    </Button>
+                    {menu}
                   </div>
-                  <p>
+                  <h1 className='center__title'>
                     {
                       til === "uz" ? item.title_uz
                         : til === "ru" ? item.title_ru
                           : item.title_en
                     }
-                  </p>
-                </a>
-              )
-            })}
-          </div>
-          <div className='single__center'>
-            <div className="center__item">
-              <div className='center__top'>
-                <div className='center__info'>
-                  <span><Views />{item.order}</span>
-                  <span><Calendar />{item.sana}</span>
+                  </h1>
+                  <div className="center__img">
+                    <img src={BaseUrl + item.img} alt="" />
+                  </div>
                 </div>
-                <Button
-                  id="basic-button"
-                  aria-controls={open ? 'basic-menu' : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? 'true' : undefined}
-                  onClick={handleClick}
-                >
-                  {t("SHARE")} <ShareIcon fontSize='small' />
-                </Button>
-                {menu}
-              </div>
-              <h1 className='center__title'>
-                {
-                  til === "uz" ? item.title_uz
-                    : til === "ru" ? item.title_ru
-                      : item.title_en
-                }
-              </h1>
-              <div className="center__img">
-                <img src={BaseUrl + item.img} alt="" />
-              </div>
-            </div>
-            <div className="center__item">
-              <p dangerouslySetInnerHTML={{
-                __html:
-                  til === "uz" ? item.text_uz
-                    : til === "ru" ? item.text_ru
-                      : item.text_en
-              }}>
-              </p>
-
-            </div>
-          </div>
-          <div className='single__news single__right'>
-            {data2?.map((item, index) => {
-              return (
-                <a href={`${item.id}`} className="single__item b_bot" key={index}>
-                  <div className='news__info'>
-                    <span><Views />{item.order}</span>
-                    <span><Calendar />{item.sana}</span>
-                  </div>
-                  <p>
-                    {
-                      til === "uz" ? item.title_uz
-                        : til === "ru" ? item.title_ru
-                          : item.title_en
-                    }
+                <div className="center__item">
+                  <p dangerouslySetInnerHTML={{
+                    __html:
+                      til === "uz" ? item.text_uz
+                        : til === "ru" ? item.text_ru
+                          : item.text_en
+                  }}>
                   </p>
-                </a>
-              )
-            })}
+
+                </div>
+              </div>
+              <div className='single__news single__right'>
+                {data2?.map((item, index) => {
+                  return (
+                    <a href={`${item.id}`} className="single__item b_bot" key={index}>
+                      <div className='news__info'>
+                        <span><Views />{item.order}</span>
+                        <span><Calendar />{item.sana}</span>
+                      </div>
+                      <p>
+                        {
+                          til === "uz" ? item.title_uz
+                            : til === "ru" ? item.title_ru
+                              : item.title_en
+                        }
+                      </p>
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </React.Fragment>
+        )
+      }}
+    </V1.Consumer>
   )
 }
 
