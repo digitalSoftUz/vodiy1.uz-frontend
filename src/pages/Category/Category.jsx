@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BaseUrl } from '../../contans';
 import { Calendar, Views } from '../../assets/icons';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import CardSkeleton from '../../components/CardSkeleton';
 import ListSkeleton from '../../components/ListSkeleton';
 import Pagination from '@mui/material/Pagination';

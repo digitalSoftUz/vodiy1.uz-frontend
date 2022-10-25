@@ -1,6 +1,5 @@
 import React from 'react';
 import { Pagination } from "swiper";
-import { Link } from 'react-router-dom';
 import { BaseUrl } from '../../../contans';
 import { Swiper, SwiperSlide } from "swiper/react";
 

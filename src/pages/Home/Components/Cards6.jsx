@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Play, Photo } from '../../../assets/icons';
+import { Photo } from '../../../assets/icons';
 import { BaseUrl } from '../../../contans';
 
 const Card6 = (props) => {

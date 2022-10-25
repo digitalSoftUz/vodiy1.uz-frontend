@@ -52,7 +52,7 @@ class Mode extends Component {
   componentDidMount() {
     axios.get(`${BaseUrl}api/test`).then((res) => {
       const data = res?.data
-      console.log(data)
+      // console.log(data)
       this.setState({
         // data:data,
         oxrgi: data?.oxrgi[0],
@@ -74,7 +74,7 @@ class Mode extends Component {
     })
   }
   render() {
-    // console.log(this.state.songi5)
+    // console.log(this.state.til)
     return (
       <V1.Provider
         value={{

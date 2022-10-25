@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { V1 } from '../context/context';
-import { Logo, Obhavo, Dollor, Gradus } from '../assets/icons';
-import dateFormat from "dateformat";
-import axios from 'axios';
+import { Logo } from '../assets/icons';
+// import dateFormat from "dateformat";
+// import axios from 'axios';
 import Banner from './Banner';
 
 const UpNav = () => {

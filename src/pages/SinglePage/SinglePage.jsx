@@ -16,14 +16,10 @@ import {
   TelegramIcon,
 } from "react-share";
 import ShareIcon from '@mui/icons-material/Share';
-import { Helmet } from 'react-helmet-async';
 
 const SinglePage = (props) => {
   var til = props.til
   const { t } = useTranslation()
-  // var songi15 = props.songi15
-  // const data1 = songi15.slice(0, 10)
-  // const data2 = songi15.slice(10, 20)
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [item, setitem] = useState([]);
@@ -59,13 +55,6 @@ const SinglePage = (props) => {
     )
     getData1()
     getData2()
-    // if (id !== "") {
-    //   // console.log(id)
-    //   const ele = document.getElementById('head__tag')
-    //   var meta = document.createElement("meta")
-    //   meta.setAttribute("property", "og:type", "content", "article")
-    //   ele.append(meta)
-    // }
   }, [id])
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -118,57 +107,6 @@ const SinglePage = (props) => {
 
   return (
     <React.Fragment>
-      {/* <Helmet>
-        <title>
-          {
-            til === "uz" ? item.title_uz
-              : til === "ru" ? item.title_ru
-                : item.title_en
-          }
-        </title>
-        <meta name="description" content={
-          til === "uz" ? item.title_uz
-            : til === "ru" ? item.title_ru
-              : item.title_en
-        } data-react-helmet="true" />
-        <meta itemprop="name" content="Vodiy1.uz" data-react-helmet="true" />
-        <meta itemprop="description" content={
-          til === "uz" ? item.title_uz
-            : til === "ru" ? item.title_ru
-              : item.title_en
-        } data-react-helmet="true" />
-        <meta itemprop="image" content={BaseUrl + item.img} data-react-helmet="true" />
-
-
-        <meta property="og:url" content={`https://vodiy1.uz/news/${item.id}`} data-react-helmet="true" />
-        <meta property="og:type" content="website" data-react-helmet="true" />
-        <meta property="og:title" content={
-          til === "uz" ? item.title_uz
-            : til === "ru" ? item.title_ru
-              : item.title_en
-        } data-react-helmet="true" />
-        <meta property="og:description" content={
-          til === "uz" ? item.title_uz
-            : til === "ru" ? item.title_ru
-              : item.title_en
-        } data-react-helmet="true" />
-        <meta property="og:image" content={BaseUrl + item.img} data-react-helmet="true" />
-
-
-        <meta name="twitter:card" content="summary_large_image" data-react-helmet="true" />
-        <meta name="twitter:title" content={
-          til === "uz" ? item.title_uz
-            : til === "ru" ? item.title_ru
-              : item.title_en
-        } data-react-helmet="true" />
-        <meta name="twitter:description" content={
-          til === "uz" ? item.title_uz
-            : til === "ru" ? item.title_ru
-              : item.title_en
-        } data-react-helmet="true" />
-        <meta name="twitter:image" content={BaseUrl + item.img} data-react-helmet="true" />
-        <meta name="keywords" content="Yangiliklar,хабарлар,интервью, Dunyo Sport, фото ва видео материаллар" data-react-helmet="true" />
-      </Helmet> */}
       <div className="container">
         <div className="singlepage">
           <div className='single__news single__left'>
@@ -191,7 +129,6 @@ const SinglePage = (props) => {
             })}
           </div>
           <div className='single__center'>
-            {/* <DocumentMeta {...meta}> */}
             <div className="center__item">
               <div className='center__top'>
                 <div className='center__info'>
@@ -230,7 +167,6 @@ const SinglePage = (props) => {
               </p>
 
             </div>
-            {/* </DocumentMeta> */}
           </div>
           <div className='single__news single__right'>
             {data2?.map((item, index) => {

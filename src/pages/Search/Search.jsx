@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BaseUrl } from '../../contans';
 import { V1 } from '../../context/context';
 import { Calendar, Views } from '../../assets/icons';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import CardSkeleton from '../../components/CardSkeleton';
 
 const Search = () => {
