@@ -34,7 +34,7 @@ const Main = () => {
                   {
                     x.til === "uz" ? x.data1?.name_uz
                       : x.til === "ru" ? x.data1?.name_ru
-                        : x.data1?.name_en
+                        : x.data1?.name_ru
                   }
                   <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
@@ -45,7 +45,7 @@ const Main = () => {
                   {
                     x.til === "uz" ? x.data2?.name_uz
                       : x.til === "ru" ? x.data2?.name_ru
-                        : x.data2?.name_en
+                        : x.data2?.name_ru
                   }
                   <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
@@ -56,7 +56,7 @@ const Main = () => {
                   {
                     x.til === "uz" ? x.data3?.name_uz
                       : x.til === "ru" ? x.data3?.name_ru
-                        : x.data3?.name_en
+                        : x.data3?.name_ru
                   }
                   <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
@@ -72,7 +72,7 @@ const Main = () => {
                   {
                     x.til === "uz" ? x.data5?.name_uz
                       : x.til === "ru" ? x.data5?.name_ru
-                        : x.data5?.name_en
+                        : x.data5?.name_ru
                   }
                   <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
@@ -85,7 +85,7 @@ const Main = () => {
                   {
                     x.til === "uz" ? x.data4?.name_uz
                       : x.til === "ru" ? x.data4?.name_ru
-                        : x.data4?.name_en
+                        : x.data4?.name_ru
                   }
                   <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
@@ -105,7 +105,7 @@ const Main = () => {
                   {
                     x.til === "uz" ? x.data10?.name_uz
                       : x.til === "ru" ? x.data10?.name_ru
-                        : x.data10?.name_en
+                        : x.data10?.name_ru
                   }
                   <div><span>{ALL}</span> <EastIcon /></div>
                 </Link>
@@ -118,7 +118,7 @@ const Main = () => {
                   {
                     x.til === "uz" ? x.data6?.name_uz
                       : x.til === "ru" ? x.data6?.name_ru
-                        : x.data6?.name_en
+                        : x.data6?.name_ru
                   }
                 </Link>
                 <div className='slider__box'>
@@ -130,7 +130,7 @@ const Main = () => {
                   {
                     x.til === "uz" ? x.data7?.name_uz
                       : x.til === "ru" ? x.data7?.name_ru
-                        : x.data7?.name_en
+                        : x.data7?.name_ru
                   }
                 </Link>
                 <div className='slider__box'>
@@ -142,7 +142,7 @@ const Main = () => {
                   {
                     x.til === "uz" ? x.data8?.name_uz
                       : x.til === "ru" ? x.data8?.name_ru
-                        : x.data8?.name_en
+                        : x.data8?.name_ru
                   }
                 </Link>
                 <div className='slider__box'>
@@ -154,7 +154,7 @@ const Main = () => {
               {
                 x.til === "uz" ? x.data9?.name_uz
                   : x.til === "ru" ? x.data9?.name_ru
-                    : x.data9?.name_en
+                    : x.data9?.name_ru
               }
             </Link>
             <Slider2 til={x.til} data={x.data9?.xabar} />

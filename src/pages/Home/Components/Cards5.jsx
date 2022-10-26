@@ -20,7 +20,7 @@ const Card5 = (props) => {
                 {
                   til === "uz" ? item.title_uz
                     : til === "ru" ? item.title_ru
-                      : item.title_en
+                      : item.title_ru
                 }
               </p>
             </a>

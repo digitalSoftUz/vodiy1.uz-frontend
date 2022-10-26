@@ -69,7 +69,7 @@ const Reyting = () => {
                         { 
                           x.til === "uz" ? item.savol_uz
                           : x.til === "ru" ? item.savol_ru
-                          : item.savol_en
+                          : item.savol_ru
                         }
                       </h1>
                       {item.variant.map((v, index)=>{
@@ -79,7 +79,7 @@ const Reyting = () => {
                               {
                                 x.til === "uz" ? v.name_uz
                                 : x.til === "ru" ? v.name_ru
-                                : v.name_en
+                                : v.name_ru
                               }
                             </p>
                             <Tooltip title={`${v.gols + " " + OVOZ}`} placement="top-end">

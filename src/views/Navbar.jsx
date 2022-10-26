@@ -55,7 +55,7 @@ const Navbar = () => {
                         {
                           x.til === "uz" ? i.name_uz
                           : x.til === "ru" ? i.name_ru
-                          : i.name_en
+                          : i.name_ru
                         }
                       </span></NavLink>
                     )

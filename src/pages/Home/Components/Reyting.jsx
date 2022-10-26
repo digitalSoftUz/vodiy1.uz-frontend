@@ -76,7 +76,7 @@ const Reyting = (props) => {
               {
                 til === "uz" ? savol?.savol_uz
                 : til === "ru" ? savol?.savol_ru
-                : savol?.savol_en
+                : savol?.savol_ru
               }  
             </h2>
             <Snackbar
@@ -94,7 +94,7 @@ const Reyting = (props) => {
                     {
                       til === "uz" ? item.name_uz
                       : til === "ru" ? item.name_ru
-                      : item.name_en
+                      : item.name_ru
                     }
                   </p>
                   <div className='reyting__progress'>

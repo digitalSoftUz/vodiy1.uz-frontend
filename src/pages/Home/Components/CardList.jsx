@@ -22,14 +22,14 @@ const CardList = (props) => {
                   {
                     til === "uz" ? item.title_uz
                       : til === "ru" ? item.title_ru
-                        : item.title_en
+                        : item.title_ru
                   }
                 </h1>
                 {/* <p>
                   {
                     til === "uz" ? item.description_uz
                     : til === "ru" ? item.description_ru
-                    : item.description_en
+                    : item.description_ru
                   }
                 </p> */}
               </div>

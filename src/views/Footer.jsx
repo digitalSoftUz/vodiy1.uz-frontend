@@ -38,7 +38,7 @@ const Footer = (props) => {
                   {
                     til === "uz" ? data.text_uz
                     : til === "ru" ? data.text_ru
-                    : data.text_en
+                    : data.text_ru
                   }
                 </p>
               </div>
@@ -49,7 +49,7 @@ const Footer = (props) => {
                       {
                         til === "uz" ? item.name_uz
                         : til === "ru" ? item.name_ru
-                        : item.name_en
+                        : item.name_ru
                       }
                     </Link>
                   )
@@ -62,7 +62,7 @@ const Footer = (props) => {
                       {
                         til === "uz" ? item.name_uz
                         : til === "ru" ? item.name_ru
-                        : item.name_en
+                        : item.name_ru
                       }
                     </Link>
                   )
@@ -75,7 +75,7 @@ const Footer = (props) => {
                   {
                     til === "uz" ? data.manzil_uz
                     : til === "ru" ? data.manzil_ru
-                    : data.manzil_en
+                    : data.manzil_ru
                   }
                 </p>
                 <p>{TEL} +99899 123 45 67</p>

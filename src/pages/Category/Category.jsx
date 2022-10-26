@@ -108,7 +108,7 @@ const Category = (props) => {
                         { 
                           x.til === "uz" ? item.title_uz
                           : x.til === "ru" ? item.title_ru
-                          : item.title_en
+                          : item.title_ru
                         } 
                       </p>
                     </a>
@@ -143,7 +143,7 @@ const Category = (props) => {
                         { 
                           x.til === "uz" ? item.title_uz
                           : x.til === "ru" ? item.title_ru
-                          : item.title_en
+                          : item.title_ru
                         }
                       </p>
                     </a>

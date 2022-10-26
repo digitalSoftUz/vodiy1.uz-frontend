@@ -25,14 +25,14 @@ const Header = () => {
                   {
                     x.til === "uz" ? x.oxrgi.title_uz
                       : x.til === "ru" ? x.oxrgi.title_ru
-                        : x.oxrgi.title_en
+                        : x.oxrgi.title_ru
                   }
                 </h1>
                 {/* <p>
                   {
                     x.til === "uz" ? x.oxrgi.description_uz
                     : x.til === "ru" ? x.oxrgi.description_ru
-                    : x.oxrgi.title_en
+                    : x.oxrgi.title_ru
                   }  
                 </p> */}
               </div>
@@ -51,7 +51,7 @@ const Header = () => {
                       {
                         x.til === "uz" ? item.title_uz
                           : x.til === "ru" ? item.title_ru
-                            : item.title_en
+                            : item.title_ru
                       }
                     </a>
                   </div>

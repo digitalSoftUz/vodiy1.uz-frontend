@@ -66,7 +66,7 @@ const SinglePage = (props) => {
   };
   let title = til === "uz" ? item.title_uz
     : til === "ru" ? item.title_ru
-      : item.title_en
+      : item.title_ru
   const menu = (
     <Menu
       id="basic-menu"
@@ -123,7 +123,7 @@ const SinglePage = (props) => {
                         {
                           til === "uz" ? item.title_uz
                             : til === "ru" ? item.title_ru
-                              : item.title_en
+                              : item.title_ru
                         }
                       </p>
                     </a>
@@ -152,7 +152,7 @@ const SinglePage = (props) => {
                     {
                       til === "uz" ? item.title_uz
                         : til === "ru" ? item.title_ru
-                          : item.title_en
+                          : item.title_ru
                     }
                   </h1>
                   <div className="center__img">
@@ -164,7 +164,7 @@ const SinglePage = (props) => {
                     __html:
                       til === "uz" ? item.text_uz
                         : til === "ru" ? item.text_ru
-                          : item.text_en
+                          : item.text_ru
                   }}>
                   </p>
 
@@ -182,7 +182,7 @@ const SinglePage = (props) => {
                         {
                           til === "uz" ? item.title_uz
                             : til === "ru" ? item.title_ru
-                              : item.title_en
+                              : item.title_ru
                         }
                       </p>
                     </a>
