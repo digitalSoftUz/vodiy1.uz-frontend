@@ -78,7 +78,7 @@ const Footer = (props) => {
                     : data.manzil_ru
                   }
                 </p>
-                <p>{TEL} +99899 123 45 67</p>
+                <p>{TEL} {data.tel}</p>
                 <div className='socialsets'>
                   <a href={`${data.telegram}`}><Telegram /></a>
                   <a href={`${data.facebook}`}><Facebook /></a>
