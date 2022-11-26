@@ -5,31 +5,17 @@ const app = express();
 const axios = require('axios')
 const PORT = process.env.PORT || 5000;
 const indexPath = path.resolve(__dirname, 'build', 'index.html');
+const router = express.Router()
 
-function getPostData(id) {
-  let dt = axios.get(`https://admin.vodiy1.uz/api/findone/${id}`).then(
-    function (res) {
-      return res.data.data
-    }).catch(function (response) {
-      return {}
-    });
-  console.log(dt);
-  return dt;
-}
-// static resources should just be served as they are
-app.use(express.static(
-  path.resolve(__dirname, 'build'),
-  { maxAge: '30d' },
-));
-// here we serve the index.html page
-app.get('/news/:id', (req, res, next) => {
+
+router.get('/news/:id', (req, res, next) => {
   fs.readFile(indexPath, 'utf8', (err, htmlData) => {
     if (err) {
       console.error('Error during file reading', err);
       return res.status(404).end()
     }
-
     axios.get(`https://admin.vodiy1.uz/api/findone/${req.params.id}`).then(
+
       function (response) {
         const post = response.data.data
         htmlData = htmlData.replace(
@@ -59,19 +45,15 @@ app.get('/news/:id', (req, res, next) => {
   });
 });
 
-app.get('/*', (req, res, next) => {
+
+router.get("/*", (req, res, next) => {
   fs.readFile(indexPath, 'utf8', (err, htmlData) => {
     if (err) {
       console.error('Error during file reading', err);
       return res.status(404).end()
     }
-    htmlData = htmlData.replace('__META_OG_TITLE__', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
-      .replace('__META_OG_DESCRIPTION__', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
-      .replace('__META_DESCRIPTION__', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
-      .replace('__META_OG_IMAGE__', "")
-      .replace('__META_OG_URL__', `https://vodiy1.uz/${req.url}`)
+    htmlData = htmlData
       .replace('__META_OG_TITLE__N', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
-      .replace('__META_DESCRIPTION__N', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
       .replace('__META_OG_DESCRIPTION__N', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
       .replace('__META_OG_IMAGE__N', ``)
       .replace('__META_OG_TITLE__I', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
@@ -84,13 +66,12 @@ app.get('/*', (req, res, next) => {
       .replace('__META_OG_TITLE__T', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
       .replace('__META_OG_DESCRIPTION__T', "Vodiy va O'zbekiston yangiliklari, eng tezkor xabarlar, qiziqarli maqolalar - VODIY1.UZ")
       .replace('__META_OG_IMAGE__T', ``)
-      .replace('__META_IMAGE__', ``)
-    return res.send(htmlData);
+    res.send(htmlData);
   });
 });
 
+app.use("/", router);
 
-// listening...
 app.listen(PORT, (error) => {
   if (error) {
     return console.log('Error during app startup', error);
